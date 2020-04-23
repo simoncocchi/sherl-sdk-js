@@ -42,7 +42,7 @@ module.exports = {
     filename: '[name].js',
     path: path.resolve(__dirname, '_bundles'),
     libraryTarget: 'umd',
-    library: 'Sherl',
+    library: 'sherl',
     umdNamedDefine: true,
   },
 };
