@@ -16,7 +16,7 @@
     "build:bundle:watch": "webpack -w",
     "watch": "run-p build:commonjs:watch build:esm:watch build:bundle:watch",
     "lint": "run-s lint:prettier lint:eslint",
-    "lint:prettier": "prettier \"src/**/*.ts\"",
+    "lint:prettier": "prettier --check \"src/**/*.ts\"",
     "lint:eslint": "eslint src/**/*.ts --ext .js,.jsx,.ts,.tsx",
     "fix": "run-s fix:prettier fix:eslint",
     "fix:prettier": "prettier --write \"src/**/*.ts\"",
@@ -34,7 +34,9 @@
     "url": "https://github.com/Winzana/sherl-sdk-js/issues"
   },
   "homepage": "https://github.com/Winzana/sherl-sdk-js#readme",
-  "dependencies": {},
+  "dependencies": {
+    "axios": "^0.19.2"
+  },
   "devDependencies": {
     "@types/node": "^13.9.1",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
