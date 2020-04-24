@@ -2,20 +2,10 @@
 
 Sherl SDK for JavaScript.
 
-### Build
+### Sherl
 
-```
-npm run build
-```
+Sherl is a low-code platform created by [Winzana](https://winzana.com).
 
-### Linters (check)
+### Contributions
 
-```
-npm run lint
-```
-
-### Linters (fix)
-
-```
-npm run fix
-```
+See [CONTRIBUTING.md](CONTRIBUTING.md)
