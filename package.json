@@ -1,6 +1,5 @@
 {
   "name": "sherl-sdk",
-  "private": true,
   "version": "0.0.1",
   "description": "Sherl SDK for JavaScript",
   "main": "lib/index.js",
@@ -29,7 +28,7 @@
   },
   "keywords": [],
   "author": "Winzana",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Winzana/sherl-sdk-js/issues"
   },
