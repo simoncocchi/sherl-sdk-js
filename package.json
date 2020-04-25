@@ -1,6 +1,6 @@
 {
-  "name": "sherl-sdk",
-  "version": "0.0.1",
+  "name": "@sherl/sdk",
+  "version": "0.0.0-development",
   "description": "Sherl SDK for JavaScript",
   "main": "lib/index.js",
   "module": "lib-esm/index.js",
@@ -20,11 +20,12 @@
     "fix": "run-s fix:prettier fix:eslint",
     "fix:prettier": "prettier --write \"src/**/*.ts\"",
     "fix:eslint": "eslint src/**/*.ts --fix -f stylish",
-    "clean": "rimraf _bundles lib lib-esm"
+    "clean": "rimraf _bundles lib lib-esm",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Winzana/sherl-sdk-js.git"
+    "url": "https://github.com/Winzana/sherl-sdk-js.git"
   },
   "keywords": [],
   "author": "Winzana",
@@ -46,6 +47,7 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^1.19.1",
     "rimraf": "^3.0.2",
+    "semantic-release": "^17.0.7",
     "ts-loader": "^6.2.1",
     "typescript": "^3.8.3",
     "uglifyjs-webpack-plugin": "^2.2.0",
@@ -54,5 +56,8 @@
   },
   "files": [
     "lib/**/*"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }
