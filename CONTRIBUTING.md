@@ -126,6 +126,8 @@ Actions are called by the provider.
 
 ### Git Commit Messages
 
+Guidelines for commit messages are based on [Angular contributors guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-guidelines).
+
 A commit message should be structured as follow:
 
 ```
