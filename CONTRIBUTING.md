@@ -82,6 +82,13 @@ ln -s /path-to/sherl-sdk-js/_bundles/sherl-sdk.min.js ./
 
 ### Pull Requests
 
+1. Fork the repo.
+2. Make your changes in a new git branch.
+3. Commit your changes using a message that follows our [commit message guidelines](CONTRIBUTING.md#git-commit-messages).
+4. Push your branch to GitHub.
+5. In GitHub, send a pull request to `sherl-sdk-js:develop`.
+   - We will review your changes and possibly suggest changes.
+
 ## Styleguides
 
 ### Project structure
@@ -126,7 +133,9 @@ Actions are called by the provider.
 
 ### Git Commit Messages
 
-Guidelines for commit messages are based on [Angular contributors guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-guidelines).
+We use [semantic-release](https://github.com/semantic-release/semantic-release) for automated version management and package publishing.
+
+Guidelines for commit messages are based on [AngularJS contributors guidelines](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines).
 
 A commit message should be structured as follow:
 
@@ -145,14 +154,15 @@ A commit message should be structured as follow:
   - **fix**: A bug fix
   - **refactor**: Not a new feature or a bug fix
   - **style**: Changes to code format
+  - **chore**: Changes to the build process or auxiliary tools and libraries such as documentation generation
 
 `<scope>`:
 
-- Should be lowercase
-- "kebab-case"
+- Should specify place of the commit change
+- Should be "kebab-case"
 
 `<subject>`:
 
-- Use the present tense ("Add feature" not "Added feature")
-- Use the imperative mood ("Move cursor to..." not "Moves cursor to...")
+- Don't capitalize first letter
+- Use the imperative, present tense: "change" not "changed" nor "changes"
 - Reference issues at the end of the line

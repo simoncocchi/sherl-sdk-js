@@ -6,16 +6,34 @@
 
 Sherl SDK for JavaScript.
 
+## Sherl
+
+Sherl is a low-code platform created by [Winzana](https://winzana.com).
+
+## Getting started
+
 ### Installation
 
 ```
 npm install @sherl/sdk
 ```
 
-### Sherl
+### Configuration
 
-Sherl is a low-code platform created by [Winzana](https://winzana.com).
+Before calling any other methods, you need to initialize the SDK by calling `initializeApp`:
 
-### Contributions
+```js
+// With require
+const sherl = require('@sherl/sdk');
+// OR import
+import sherl from '@sherl/sdk';
+
+sherl.initializeApp({
+  apiKey: 'YOUR_API_KEY',
+  apiSecret: 'YOUR_API_SECRET',
+});
+```
+
+## Contributions
 
 See [CONTRIBUTING.md](CONTRIBUTING.md)
