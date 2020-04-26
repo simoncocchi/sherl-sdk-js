@@ -1,4 +1,6 @@
-# sherl-sdk-js
+# @sherl/sdk
+
+![Release](https://github.com/Winzana/sherl-sdk-js/workflows/Release/badge.svg?branch=master&event=push)
 
 Sherl SDK for JavaScript.
 
