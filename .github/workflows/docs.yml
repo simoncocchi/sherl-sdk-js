@@ -23,5 +23,7 @@ jobs:
         run: npm run build
         working-directory: ${{env.working-directory}}
       - name: Publish
+        env:
+          GIT_USER: ${{ secrets.DOCS_GIT_USER }}
         run: npm run publish-gh-pages
         working-directory: ${{env.working-directory}}
