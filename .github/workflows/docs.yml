@@ -10,16 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     env:
       working-directory: ./website
+      project-name: sherl-sdk-js
     steps:
       - uses: actions/checkout@v2
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
           node-version: 12
-      - name: Configure Git
-        run: |
-          git config --global user.name "${{ secrets.DOCS_GIT_USER }}"
-          git config --global user.email "${{ secrets.DOCS_GIT_EMAIL }}"
       - name: Install dependencies
         run: npm install
         working-directory: ${{env.working-directory}}
@@ -27,8 +24,8 @@ jobs:
         run: npm run build
         working-directory: ${{env.working-directory}}
       - name: Publish
-        env:
-          GIT_USER: ${{ secrets.DOCS_GIT_USER }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run publish-gh-pages
-        working-directory: ${{env.working-directory}}
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: website/build/${{env.project-name}}
