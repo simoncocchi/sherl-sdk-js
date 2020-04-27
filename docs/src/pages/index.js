@@ -24,7 +24,7 @@ const features = [
   },
   {
     title: <>Plug in to existing solutions</>,
-    imageUrl: 'img/integration.png',
+    imageUrl: 'img/link.png',
     description: (
       <>Integrate about ten and more solutions to improve your workflow.</>
     ),
