@@ -16,6 +16,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
+      - name: Configure Git
+        run: |
+          git config --local user.name "GitHub Actions"
+          git config --local user.email "actions@github.com"
       - name: Install dependencies
         run: npm install
         working-directory: ${{env.working-directory}}
