@@ -1,11 +1,9 @@
 const path = require('path');
-const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   entry: {
-    'sherl-sdk': './src/index.ts',
-    'sherl-sdk.min': './src/index.ts',
+    'sherl-sdk': './src/index.ts'
   },
   module: {
     rules: [
@@ -29,15 +27,6 @@ module.exports = {
     extensions: ['.ts', '.js'],
   },
   devtool: 'source-map',
-  optimization: {
-    minimize: true,
-    minimizer: [
-      new TerserPlugin({
-        test: /\.min\.js$/,
-        sourceMap: true,
-      }),
-    ],
-  },
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, '_bundles'),
