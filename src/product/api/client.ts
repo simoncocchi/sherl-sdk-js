@@ -19,11 +19,9 @@ class ProductApi {
     filters: { [key: string]: any },
   ) =>
     Fetcher.get<Pagination<IProductResponse[]>>(endpoints.GET_PRODUCTS, {
-      params: {
-        page,
-        itemsPerPage,
-        ...filters,
-      },
+      page,
+      itemsPerPage,
+      ...filters,
     }).catch(err => {
       if (err.response && err.response.status) {
         throw ProductProvider.errorFactory.create(
