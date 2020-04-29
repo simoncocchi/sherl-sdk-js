@@ -1,5 +1,6 @@
 import { getProducts, getProduct } from './actions';
 import { ErrorFactory } from '../common/errors';
+import { getCategories } from './actions/get-categories.action';
 
 type Err = 'fetch-failed' | 'not-found';
 
@@ -26,6 +27,17 @@ class ProductProvider {
 
   public one(id: string) {
     return getProduct(id);
+  }
+
+  /**
+   * Get categories.
+   *
+   * @param {string} organizationId
+   * @returns
+   * @memberof ProductProvider
+   */
+  public categories(organizationId: string) {
+    return getCategories(organizationId);
   }
 }
 

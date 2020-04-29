@@ -1,4 +1,4 @@
-import { IProductResponse } from '../types';
+import { IProductResponse, ICategoryResponse } from '../types';
 import { Pagination } from '../../common/api';
 import { StringUtils } from '../../common/utils/string';
 import { endpoints } from './endpoints';
@@ -45,6 +45,26 @@ class ProductApi {
       if (err.response && err.response.status) {
         throw ProductProvider.errorFactory.create(
           getErrorCodeByHttpStatus(err.response.status),
+        );
+      }
+
+      throw err;
+    });
+
+  /**
+   * Get categories.
+   *
+   * @static
+   * @memberof ProductApi
+   */
+  public static getCategories = (organizationId: string) =>
+    Fetcher.get<ICategoryResponse[]>(endpoints.CATEGORIES, {
+      organizationId,
+    }).catch(err => {
+      if (err.response && err.response.status) {
+        throw ProductProvider.errorFactory.create(
+          getErrorCodeByHttpStatus(err.response.status),
+          { message: err.response?.data?.message },
         );
       }
 
