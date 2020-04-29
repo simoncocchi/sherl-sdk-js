@@ -3,8 +3,9 @@ import { Pagination } from '../../common/api';
 import { StringUtils } from '../../common/utils/string';
 import { endpoints } from './endpoints';
 import { Fetcher } from '../../common/api';
-import { ProductProvider } from '../provider';
-import { getErrorCodeByHttpStatus } from '../../common/errors';
+import { errorFactory } from '../errors';
+
+const fetcher = new Fetcher(errorFactory);
 
 class ProductApi {
   /**
@@ -18,18 +19,10 @@ class ProductApi {
     itemsPerPage = 10,
     filters: { [key: string]: any },
   ) =>
-    Fetcher.get<Pagination<IProductResponse[]>>(endpoints.GET_PRODUCTS, {
+    fetcher.get<Pagination<IProductResponse[]>>(endpoints.GET_PRODUCTS, {
       page,
       itemsPerPage,
       ...filters,
-    }).catch(err => {
-      if (err.response && err.response.status) {
-        throw ProductProvider.errorFactory.create(
-          getErrorCodeByHttpStatus(err.response.status),
-        );
-      }
-
-      throw err;
     });
 
   /**
@@ -39,17 +32,9 @@ class ProductApi {
    * @memberof ProductApi
    */
   public static getProduct = (id: string) =>
-    Fetcher.get<IProductResponse>(
+    fetcher.get<IProductResponse>(
       StringUtils.bindContext(endpoints.GET_PRODUCT, { id }),
-    ).catch(err => {
-      if (err.response && err.response.status) {
-        throw ProductProvider.errorFactory.create(
-          getErrorCodeByHttpStatus(err.response.status),
-        );
-      }
-
-      throw err;
-    });
+    );
 
   /**
    * Get categories.
@@ -58,17 +43,8 @@ class ProductApi {
    * @memberof ProductApi
    */
   public static getCategories = (organizationId: string) =>
-    Fetcher.get<ICategoryResponse[]>(endpoints.CATEGORIES, {
+    fetcher.get<ICategoryResponse[]>(endpoints.CATEGORIES, {
       organizationId,
-    }).catch(err => {
-      if (err.response && err.response.status) {
-        throw ProductProvider.errorFactory.create(
-          getErrorCodeByHttpStatus(err.response.status),
-          { message: err.response?.data?.message },
-        );
-      }
-
-      throw err;
     });
 }
 

@@ -1,21 +1,7 @@
 import { getProducts, getProduct } from './actions';
-import { ErrorFactory } from '../common/errors';
 import { getCategories } from './actions/get-categories.action';
 
-type Err = 'fetch-failed' | 'not-found';
-
-export const errors = {
-  'fetch-failed': 'Failed to fetch products API',
-  'not-found': 'Product not found',
-};
-
 class ProductProvider {
-  public static errorFactory = new ErrorFactory<Err>(
-    'product',
-    'Product',
-    errors,
-  );
-
   public list(
     page = 1,
     itemsPerPage = 10,
