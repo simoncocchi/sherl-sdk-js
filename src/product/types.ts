@@ -8,6 +8,7 @@ export interface ICategoryResponse {
   organizationUri: string;
   createdAt: string;
   updatedAt: string;
+  subCategories?: ICategoryResponse[];
 }
 
 export interface IProductResponse {
