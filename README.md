@@ -26,6 +26,9 @@ The script is available in the [releases section](https://github.com/Winzana/she
 
 ```html
 <script type="text/javascript" src="sherl-sdk.min.js"></script>
+
+<!-- or through a CDN like jsDelivr -->
+<script src="https://cdn.jsdelivr.net/npm/@sherl/sdk@latest/_bundles/sherl-sdk.min.js"></script>
 ```
 
 ### Configuration

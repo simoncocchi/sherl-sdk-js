@@ -1,22 +1,45 @@
 import axios, { AxiosResponse, AxiosError } from 'axios';
 import { getGlobalObject } from './store';
-import { ErrorFactory, CommonErr } from './errors';
+import { ErrorFactory, CommonErr, getErrorCodeByHttpStatus } from './errors';
 
 class Fetcher {
-  public static async get<T>(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  constructor(private readonly errorFactory: ErrorFactory<any>) {}
+
+  public async get<T>(
     url: string,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     params?: { [key: string]: any },
   ): Promise<ApiResponse<T>> {
-    return axios.get<T>(url, { params });
+    return axios
+      .get<T>(url, { params })
+      .catch((err: AxiosError) => {
+        if (err.response && err.response.status) {
+          throw this.errorFactory.create(
+            getErrorCodeByHttpStatus(err.response.status),
+            { message: err.response?.data?.message },
+          );
+        }
+
+        throw err;
+      });
   }
 
-  public static async post<T>(
+  public async post<T>(
     url: string,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     data: { [key: string]: any },
   ): Promise<ApiResponse<T>> {
-    return axios.post<T>(url, data);
+    return axios.post<T>(url, data).catch((err: AxiosError) => {
+      if (err.response && err.response.status) {
+        throw this.errorFactory.create(
+          getErrorCodeByHttpStatus(err.response.status),
+          { message: err.response?.data?.message },
+        );
+      }
+
+      throw err;
+    });
   }
 }
 

@@ -1,20 +1,7 @@
 import { getProducts, getProduct } from './actions';
-import { ErrorFactory } from '../common/errors';
-
-type Err = 'fetch-failed' | 'not-found';
-
-export const errors = {
-  'fetch-failed': 'Failed to fetch products API',
-  'not-found': 'Product not found',
-};
+import { getCategories } from './actions/get-categories.action';
 
 class ProductProvider {
-  public static errorFactory = new ErrorFactory<Err>(
-    'product',
-    'Product',
-    errors,
-  );
-
   public list(
     page = 1,
     itemsPerPage = 10,
@@ -26,6 +13,17 @@ class ProductProvider {
 
   public one(id: string) {
     return getProduct(id);
+  }
+
+  /**
+   * Get categories.
+   *
+   * @param {string} organizationId
+   * @returns
+   * @memberof ProductProvider
+   */
+  public categories(organizationId: string) {
+    return getCategories(organizationId);
   }
 }
 
