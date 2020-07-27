@@ -1,30 +1,37 @@
-import { getProducts, getProduct } from './actions';
-import { getCategories } from './actions/get-categories.action';
+// import { } from './actions';
+import { getUrlCategories, getUrlCategoriesSlug, getUrlCategoriesOrganizationSlug } from './actions/get-categories.action';
 
-class ProductProvider {
-  public list(
-    page = 1,
-    itemsPerPage = 10,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    filters: { [key: string]: any },
-  ) {
-    return getProducts(page, itemsPerPage, filters);
-  }
+class UrlProductProvider {
+  // public list(
+  //   page = 1,
+  //   itemsPerPage = 10,
+  //   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  //   filters: { [key: string]: any },
+  // ) {
+  //   return getProducts(page, itemsPerPage, filters);
+  // }
 
-  public one(id: string) {
-    return getProduct(id);
-  }
+  // public one(id: string) {
+  //   return getProduct(id);
+  // }
 
   /**
    * Get categories.
    *
-   * @param {string} organizationId
+   * 
    * @returns
-   * @memberof ProductProvider
+   * @memberof UrlProductProvider
    */
-  public categories(organizationId: string) {
-    return getCategories(organizationId);
+  public categoriesAndSub() {
+    return getUrlCategories();
+  }
+
+  public categoriesSlug(slug: string) {
+    return getUrlCategoriesSlug(slug);
+  }
+  public categoriesOrganizationSlug(organizationslug: string) {
+    return getUrlCategoriesOrganizationSlug(organizationslug);
   }
 }
 
-export { ProductProvider };
+export { UrlProductProvider };

@@ -1,53 +1,32 @@
-export interface ICategoryResponse {
+export interface IUrlCategoryWithSubResponse {
   id: string;
   uri: string;
-  taxeValue: number;
   consumerId: string;
+  createdAt: string;
+  name: string;
+  slug: string;
+  organizationUri: string;
+  subCategories?: IUrlSubCategoryResponse[];
+}
+
+export interface IUrlSubCategoryResponse {
+  id: string;
+  uri: string;
+  consumerId: string;
+  createdAt: string;
   parentUri: string;
   name: string;
+  slug: string;
   organizationUri: string;
-  createdAt: string;
-  updatedAt: string;
-  subCategories?: ICategoryResponse[];
 }
 
-export interface IProductResponse {
-  isEnable: boolean;
+export interface IUrlCategoryResponse {
   id: string;
   uri: string;
   consumerId: string;
-  name: string;
-  slogan: string;
-  description: string;
-  categoryUri: string;
-  offers: IOfferResponse[];
-  metadatas: IMetadatasResponse;
-  options: IOptionResponse[];
-  organizationUri: string;
   createdAt: string;
-  updatedAt: string;
-  category: null;
-}
-
-export interface IMetadatasResponse {
-  degreeOfAlcohol: string;
-}
-
-export interface IOfferResponse {
-  price: number;
-  taxRate: number;
-  priceTaxIncluded: number;
-}
-
-export interface IOptionResponse {
-  id: string;
-  items: IItemResponse[];
   name: string;
-  required: boolean;
-  rangeMin: number;
+  slug: string;
+  organizationUri: string;
 }
 
-export interface IItemResponse {
-  name: string;
-  priceTaxIncluded: number;
-}
