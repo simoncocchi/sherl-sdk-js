@@ -1,3 +1,4 @@
+import { Pagination } from '../../common/api';
 import { IUrlCategoryWithSubResponse, IUrlSubCategoryResponse, IUrlCategoryResponse  } from '../types';
 import { UrlProductApi } from '../api/client';
 import { ApiResponse } from '../../common/api';
@@ -7,34 +8,28 @@ export const getUrlCategories = async (): Promise<IUrlCategoryWithSubResponse[]>
   return response.data;
 };
 
-export const getUrlCategoriesSlug = async (slug: string): Promise<IUrlSubCategoryResponse> => {
-  let response: ApiResponse<IUrlSubCategoryResponse> | null = null;
+export const getUrlCategoriesSlug = async (slug: { [key: string]: any },
+): Promise<Pagination<IUrlSubCategoryResponse[]>> => {
+  const response = await UrlProductApi.getUrlCategoriesSlug( slug);
 
-  try {
-    response = await UrlProductApi.getUrlCategoriesSlug(slug);
-  } catch ({ name, response: responseError, stack, isAxiosError, ...rest }) {
-    throw new Error('Cannot reach API');
+  if (response.status !== 200) {
+    throw new Error(
+      `Failed to fetch products API (status: ${response.status})`,
+    );
   }
 
-  if (response) {
-    return response.data;
-  }
-
-  throw new Error('Empty response from API');
+  return response.data;
 };
 
-export const getUrlCategoriesOrganizationSlug = async (organizationslug: string): Promise<IUrlCategoryResponse> => {
-  let response: ApiResponse<IUrlCategoryResponse> | null = null;
-
-  try {
-    response = await UrlProductApi.getUrlCategoriesOrganizationSlug(organizationslug);
-  } catch ({ name, response: responseError, stack, isAxiosError, ...rest }) {
-    throw new Error('Cannot reach API');
-  }
-
-  if (response) {
+export const getUrlCategoriesOrganizationSlug = async (organizationSlug: { [key: string]: any },
+  ): Promise<Pagination<IUrlCategoryResponse[]>> => {
+    const response = await UrlProductApi.getUrlCategoriesOrganizationSlug( organizationSlug);
+  
+    if (response.status !== 200) {
+      throw new Error(
+        `Failed to fetch products API (status: ${response.status})`,
+      );
+    }
+  
     return response.data;
-  }
-
-  throw new Error('Empty response from API');
-};
+  };

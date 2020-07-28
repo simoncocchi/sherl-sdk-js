@@ -67,22 +67,17 @@ class UrlProductApi {
    * @static
    * @memberof UrlProductApi
    */
-  public static getUrlCategoriesSlug = (slug: string) =>
-    fetcher.get<IUrlSubCategoryResponse>(
-      StringUtils.bindContext(endpoints.GET_URL_CATEGORIES_SLUG, { slug }),
+  public static getUrlCategoriesSlug = (slug: { [key: string]: any}) =>
+    fetcher.get<Pagination<IUrlSubCategoryResponse[]>>(endpoints.GET_URL_CATEGORIES_SLUG, { ...slug },
     );
-
   /**
    * Get url catégories with organization slug.
    *
    * @static
    * @memberof UrlProductApi
    */
-  public static getUrlCategoriesOrganizationSlug = (organizationslug: string) =>
-    fetcher.get<IUrlCategoryResponse>(
-      StringUtils.bindContext(endpoints.GET_URL_CATEGORIES, {
-        organizationslug,
-      }),
+  public static getUrlCategoriesOrganizationSlug = (organizationSlug: { [key: string]: any}) =>
+    fetcher.get<Pagination<IUrlCategoryResponse[]>>(endpoints.GET_URL_CATEGORIES, { ...organizationSlug},
     );
 
   /**

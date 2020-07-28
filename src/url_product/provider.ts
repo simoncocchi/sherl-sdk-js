@@ -3,7 +3,7 @@ import {
   getUrlCategories,
   getUrlCategoriesSlug,
   getUrlCategoriesOrganizationSlug,
-} from './actions/get-categories.action';
+} from './actions/get-url-categories.action';
 import { getUrlProduct, getUrlProductBySlug, getUrlProducts } from './actions';
 
 class UrlProductProvider {
@@ -31,12 +31,12 @@ class UrlProductProvider {
     return getUrlCategories();
   }
 
-  public categoriesSlug(slug: string) {
+  public categoriesSlug(slug: { [key: string]: any }) {
     return getUrlCategoriesSlug(slug);
   }
 
-  public categoriesOrganizationSlug(organizationslug: string) {
-    return getUrlCategoriesOrganizationSlug(organizationslug);
+  public categoriesOrganizationSlug(organizationSlug: { [key: string]: any }) {
+    return getUrlCategoriesOrganizationSlug(organizationSlug);
   }
 
   public UrlProductById(id: string) {
