@@ -44,28 +44,34 @@ export interface IUrlProductResponse {
   description:string;
   categoryUri: string;
   categoryUris: [];
-  offers: [{
+  offers: [IOfferResponse];
+  metadatas: IMetadataResponse;
+  options: [];
+  photos: [];
+  category: ICategoryinproductResponse;
+
+}
+
+export interface IOfferResponse {
     _id: string;
     price: number;
     taxRate: number;
     priceTaxIncluded: number;
-  }];
-  metadatas: {
-    quotaType: string;
-    quotaValue: number;
-  };
-  options: [];
-  photos: [];
-  category: {
-    id: string;
-    uri: string;
-    consumerId: string;
-    createdAt: string;
-    updatedAt: string;
-    name: string;
-    slug: string;
-    organizationUri: string;
-    isPublic: boolean;
-  }
+}
 
+export interface IMetadataResponse {
+  quotaType: string;
+  quotaValue: number;
+}
+
+export interface ICategoryinproductResponse {
+  id: string;
+  uri: string;
+  consumerId: string;
+  createdAt: string;
+  updatedAt: string;
+  name: string;
+  slug: string;
+  organizationUri: string;
+  isPublic: boolean;
 }
