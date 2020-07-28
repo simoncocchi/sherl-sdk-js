@@ -87,6 +87,18 @@ class UrlProductApi {
       StringUtils.bindContext(endpoints.GET_URL_PRODUCT, { id }),
     );
 
+    /**
+   * Get url find one product by slug.
+   *
+   * @static
+   * @memberof UrlProductApi
+   */
+  public static getUrlProductBySlug = (slug: string) =>
+  fetcher.get<IUrlProductResponse>(
+    StringUtils.bindContext(endpoints.GET_URL_PRODUCT_SLUG, { slug }),
+  );
+
+
 }
 
 export { UrlProductApi };

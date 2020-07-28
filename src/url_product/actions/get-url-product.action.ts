@@ -17,3 +17,19 @@ export const getUrlProduct = async (id: string): Promise<IUrlProductResponse> =>
 
   throw new Error('Empty response from API');
 };
+
+export const getUrlProductBySlug = async (slug: string): Promise<IUrlProductResponse> => {
+  let response: ApiResponse<IUrlProductResponse> | null = null;
+
+  try {
+    response = await UrlProductApi.getUrlProductBySlug(slug);
+  } catch ({ name, response: responseError, stack, isAxiosError, ...rest }) {
+    throw new Error('Cannot reach API');
+  }
+
+  if (response) {
+    return response.data;
+  }
+
+  throw new Error('Empty response from API');
+};
