@@ -30,3 +30,42 @@ export interface IUrlCategoryResponse {
   organizationUri: string;
 }
 
+export interface IUrlProductResponse {
+  isEnable: boolean;
+  id: string;
+  uri: string;
+  consumerId: string;
+  createdAt: string;
+  updatedAt: string;
+  type: string;
+  name: string;
+  slug: string;
+  slogan: string;
+  description:string;
+  categoryUri: string;
+  categoryUris: [];
+  offers: [{
+    _id: string;
+    price: number;
+    taxRate: number;
+    priceTaxIncluded: number;
+  }];
+  metadatas: {
+    quotaType: string;
+    quotaValue: number;
+  };
+  options: [];
+  photos: [];
+  category: {
+    id: string;
+    uri: string;
+    consumerId: string;
+    createdAt: string;
+    updatedAt: string;
+    name: string;
+    slug: string;
+    organizationUri: string;
+    isPublic: boolean;
+  }
+
+}
