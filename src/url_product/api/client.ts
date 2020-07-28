@@ -1,4 +1,9 @@
-import { IUrlCategoryWithSubResponse, IUrlSubCategoryResponse, IUrlCategoryResponse, IUrlProductResponse } from '../types';
+import {
+  IUrlCategoryWithSubResponse,
+  IUrlSubCategoryResponse,
+  IUrlCategoryResponse,
+  IUrlProductResponse,
+} from '../types';
 import { Pagination } from '../../common/api';
 import { StringUtils } from '../../common/utils/string';
 import { endpoints } from './endpoints';
@@ -53,7 +58,9 @@ class UrlProductApi {
    * @memberof UrlProductApi
    */
   public static getUrlCategoriesAndSub = () =>
-    fetcher.get<IUrlCategoryWithSubResponse[]>(endpoints.GET_URL_CATEGORIES_AND_SUB);
+    fetcher.get<IUrlCategoryWithSubResponse[]>(
+      endpoints.GET_URL_CATEGORIES_AND_SUB,
+    );
   /**
    * Get url catégories with slug.
    *
@@ -73,7 +80,9 @@ class UrlProductApi {
    */
   public static getUrlCategoriesOrganizationSlug = (organizationslug: string) =>
     fetcher.get<IUrlCategoryResponse>(
-      StringUtils.bindContext(endpoints.GET_URL_CATEGORIES, { organizationslug }),
+      StringUtils.bindContext(endpoints.GET_URL_CATEGORIES, {
+        organizationslug,
+      }),
     );
 
   /**
@@ -87,18 +96,33 @@ class UrlProductApi {
       StringUtils.bindContext(endpoints.GET_URL_PRODUCT, { id }),
     );
 
-    /**
+  /**
    * Get url find one product by slug.
    *
    * @static
    * @memberof UrlProductApi
    */
   public static getUrlProductBySlug = (slug: string) =>
-  fetcher.get<IUrlProductResponse>(
-    StringUtils.bindContext(endpoints.GET_URL_PRODUCT_SLUG, { slug }),
-  );
+    fetcher.get<IUrlProductResponse>(
+      StringUtils.bindContext(endpoints.GET_URL_PRODUCT_SLUG, { slug }),
+    );
 
-
+  /**
+   * Get url list of products.
+   *
+   * @static
+   * @memberof UrlProductApi
+   */
+  public static getUrlProducts = (
+    page = 1,
+    itemsPerPage = 10,
+    filters: { [key: string]: any },
+  ) =>
+    fetcher.get<Pagination<IUrlProductResponse[]>>(endpoints.GET_URL_PRODUCTS, {
+      page,
+      itemsPerPage,
+      ...filters,
+    });
 }
 
 export { UrlProductApi };
