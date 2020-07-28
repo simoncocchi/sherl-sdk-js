@@ -1,4 +1,4 @@
-import { IUrlCategoryWithSubResponse, IUrlSubCategoryResponse, IUrlCategoryResponse } from '../types';
+import { IUrlCategoryWithSubResponse, IUrlSubCategoryResponse, IUrlCategoryResponse, IUrlProductResponse } from '../types';
 import { Pagination } from '../../common/api';
 import { StringUtils } from '../../common/utils/string';
 import { endpoints } from './endpoints';
@@ -76,6 +76,16 @@ class UrlProductApi {
       StringUtils.bindContext(endpoints.GET_URL_CATEGORIES, { organizationslug }),
     );
 
+  /**
+   * Get url find one product .
+   *
+   * @static
+   * @memberof UrlProductApi
+   */
+  public static getUrlProduct = (id: string) =>
+    fetcher.get<IUrlProductResponse>(
+      StringUtils.bindContext(endpoints.GET_URL_PRODUCT, { id }),
+    );
 
 }
 

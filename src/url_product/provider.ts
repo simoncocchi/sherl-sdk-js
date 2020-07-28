@@ -1,5 +1,6 @@
 // import { } from './actions';
 import { getUrlCategories, getUrlCategoriesSlug, getUrlCategoriesOrganizationSlug } from './actions/get-categories.action';
+import { getUrlProduct } from './actions'
 
 class UrlProductProvider {
   // public list(
@@ -29,8 +30,13 @@ class UrlProductProvider {
   public categoriesSlug(slug: string) {
     return getUrlCategoriesSlug(slug);
   }
+
   public categoriesOrganizationSlug(organizationslug: string) {
     return getUrlCategoriesOrganizationSlug(organizationslug);
+  }
+
+  public oneUrlProduct(id: string) {
+    return getUrlProduct(id);
   }
 }
 
