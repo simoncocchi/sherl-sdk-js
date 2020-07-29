@@ -40,15 +40,15 @@ class ProductProvider {
    * @returns
    * @memberof ProductProvider
    */
-  public categoriesAndSub() {
+  public PublicCategoriesAndSub() {
     return getPublicCategories();
   }
 
-  public categoriesSlug(slug: { [key: string]: any }) {
+  public PublicCategoriesSlug(slug: { [key: string]: any }) {
     return getPublicCategoriesSlug(slug);
   }
 
-  public categoriesOrganizationSlug(organizationSlug: { [key: string]: any }) {
+  public PublicCategories(organizationSlug: { [key: string]: any }) {
     return getPublicCategoriesOrganizationSlug(organizationSlug);
   }
 
