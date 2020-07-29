@@ -1,13 +1,13 @@
 import { Pagination } from '../../common/api';
-import { IUrlProductResponse } from '../types';
-import { UrlProductApi } from '../api/client';
+import { IPublicProductResponse } from '../types';
+import { ProductApi } from '../api/client';
 
-export const getUrlProducts = async (
+export const getPublicProducts = async (
   page = 1,
   itemsPerPage = 10,
   filters: { [key: string]: any },
-): Promise<Pagination<IUrlProductResponse[]>> => {
-  const response = await UrlProductApi.getUrlProducts(page, itemsPerPage, filters);
+): Promise<Pagination<IPublicProductResponse[]>> => {
+  const response = await ProductApi.getPublicProducts(page, itemsPerPage, filters);
 
   if (response.status !== 200) {
     throw new Error(
