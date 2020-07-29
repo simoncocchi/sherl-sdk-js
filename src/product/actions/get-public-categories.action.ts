@@ -2,7 +2,7 @@ import { Pagination } from '../../common/api';
 import { IPublicCategoryWithSubResponse, IPublicSubCategoryResponse, IPublicCategoryResponse  } from '../types';
 import { ProductApi } from '../api/client';
 
-export const getPublicCategories = async (): Promise<IPublicCategoryWithSubResponse[]> => {
+export const getPublicCategoriesAndSub = async (): Promise<IPublicCategoryWithSubResponse[]> => {
   const response = await ProductApi.getPublicCategoriesAndSub();
   return response.data;
 };
@@ -20,15 +20,7 @@ export const getPublicCategoriesSlug = async (slug: { [key: string]: any },
   return response.data;
 };
 
-export const getPublicCategoriesOrganizationSlug = async (organizationSlug: { [key: string]: any },
-  ): Promise<Pagination<IPublicCategoryResponse[]>> => {
-    const response = await ProductApi.getPublicCategoriesOrganizationSlug( organizationSlug);
-  
-    if (response.status !== 200) {
-      throw new Error(
-        `Failed to fetch products API (status: ${response.status})`,
-      );
-    }
-  
-    return response.data;
-  };
+export const getPublicCategories = async (): Promise<IPublicCategoryResponse[]> => {
+  const response = await ProductApi.getPublicCategories();
+  return response.data;
+};

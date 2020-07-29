@@ -3,7 +3,7 @@ import { getCategories } from './actions/get-categories.action';
 import {
   getPublicCategories,
   getPublicCategoriesSlug,
-  getPublicCategoriesOrganizationSlug,
+  getPublicCategoriesAndSub,
 } from './actions/get-public-categories.action';
 
 class ProductProvider {
@@ -41,15 +41,15 @@ class ProductProvider {
    * @memberof ProductProvider
    */
   public PublicCategoriesAndSub() {
-    return getPublicCategories();
+    return getPublicCategoriesAndSub();
   }
 
   public PublicCategoriesSlug(slug: { [key: string]: any }) {
     return getPublicCategoriesSlug(slug);
   }
 
-  public PublicCategories(organizationSlug: { [key: string]: any }) {
-    return getPublicCategoriesOrganizationSlug(organizationSlug);
+  public PublicCategories() {
+    return getPublicCategories();
   }
 
   public PublicProductById(id: string) {
