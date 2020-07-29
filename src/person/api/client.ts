@@ -5,7 +5,7 @@ import { errorFactory } from '../errors';
 
 const fetcher = new Fetcher(errorFactory);
 
-class MeApi {
+class PersonApi {
   /**
    * Get Me.
    *
@@ -16,4 +16,4 @@ class MeApi {
     fetcher.get<IMeResponse[]>(endpoints.GET_ME);
 }
 
-export { MeApi };
+export { PersonApi };

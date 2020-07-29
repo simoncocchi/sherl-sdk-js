@@ -1,7 +1,7 @@
 import { IMeResponse } from '../types';
-import { MeApi } from '../api/client';
+import { PersonApi } from '../api/client';
 
 export const getMe = async (): Promise<IMeResponse[]> => {
-  const response = await MeApi.getMe();
+  const response = await PersonApi.getMe();
   return response.data;
 };
