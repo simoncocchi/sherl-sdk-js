@@ -13,44 +13,6 @@ import { errorFactory } from '../errors';
 const fetcher = new Fetcher(errorFactory);
 
 class UrlProductApi {
-  // /**
-  //  * Get list of products.
-  //  *
-  //  * @static
-  //  * @memberof ProductApi
-  //  */
-  // public static getProducts = (
-  //   page = 1,
-  //   itemsPerPage = 10,
-  //   filters: { [key: string]: any },
-  // ) =>
-  //   fetcher.get<Pagination<IProductResponse[]>>(endpoints.GET_PRODUCTS, {
-  //     page,
-  //     itemsPerPage,
-  //     ...filters,
-  //   });
-
-  // /**
-  //  * Get one product.
-  //  *
-  //  * @static
-  //  * @memberof ProductApi
-  //  */
-  // public static getProduct = (id: string) =>
-  //   fetcher.get<IProductResponse>(
-  //     StringUtils.bindContext(endpoints.GET_PRODUCT, { id }),
-  //   );
-
-  // /**
-  //  * Get categories.
-  //  *
-  //  * @static
-  //  * @memberof ProductApi
-  //  */
-  // public static getCategories = (organizationId: string) =>
-  //   fetcher.get<ICategoryResponse[]>(endpoints.CATEGORIES_ALL, {
-  //     organizationId,
-  //   });
   /**
    * Get url categories.
    *
@@ -68,7 +30,7 @@ class UrlProductApi {
    * @memberof UrlProductApi
    */
   public static getUrlCategoriesSlug = (slug: { [key: string]: any}) =>
-    fetcher.get<Pagination<IUrlSubCategoryResponse[]>>(endpoints.GET_URL_CATEGORIES_SLUG, { ...slug },
+    fetcher.get<Pagination<IUrlSubCategoryResponse[]>>(endpoints.GET_URL_CATEGORIES_SLUG, {slug },
     );
   /**
    * Get url catégories with organization slug.

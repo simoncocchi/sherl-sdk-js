@@ -1,7 +1,6 @@
 import { Pagination } from '../../common/api';
 import { IUrlCategoryWithSubResponse, IUrlSubCategoryResponse, IUrlCategoryResponse  } from '../types';
 import { UrlProductApi } from '../api/client';
-import { ApiResponse } from '../../common/api';
 
 export const getUrlCategories = async (): Promise<IUrlCategoryWithSubResponse[]> => {
   const response = await UrlProductApi.getUrlCategoriesAndSub();
