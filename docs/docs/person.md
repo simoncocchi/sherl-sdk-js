@@ -17,3 +17,10 @@ me["email"];
 ```ts
  const personGetOneByUserId = await sherl.person().findOne("userId");
 ```
+
+## Get person position 
+
+```ts
+const position = await sherl.person().position({ longitude: "your_longitude",latitude: "your_latitude"})
+```
+

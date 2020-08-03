@@ -66,3 +66,13 @@ export interface IAddressResponse {
 export interface IFavoritesResponse { 
   organizationFavorites: string;
 }
+
+export interface IPosiionResponse {
+  latitude: string;
+  longitude: string;
+  id: string;
+  country: string;
+  locality: string;
+  postalCode: string;
+  streetAddress: string;
+}

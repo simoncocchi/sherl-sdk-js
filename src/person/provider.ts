@@ -1,4 +1,4 @@
-import { getMe, getOneBy } from './actions';
+import { getMe, getOneBy, getPosition } from './actions';
 
 class PersonProvider {
 
@@ -14,6 +14,10 @@ class PersonProvider {
 
   public findOne(id: string) {
     return getOneBy(id);
+  }
+
+  public position(position: { [key: string]: any }) {
+    return getPosition(position);
   }
 }
 
