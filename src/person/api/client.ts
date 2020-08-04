@@ -34,6 +34,29 @@ class PersonApi {
       endpoints.GET_POSITION,
       { ...position },
     );
+
+    /**
+   * Get list of person.
+   *
+   * @static
+   * @memberof PersonApi
+   */
+  public static list = (
+    page = 1,
+    itemsPerPage = 10,
+    filters: { [key: string]: any },
+  ) =>
+    fetcher.get<Pagination<IMeResponse[]>>(endpoints.GET_PERSONS, {
+      page,
+      itemsPerPage,
+      ...filters,
+    });
+
+    public static getConfigs = () =>
+    fetcher.get<IMeResponse[]>(endpoints.GET_CONFIG);
+
+    public static getVirtualMoney = () =>
+    fetcher.get<IMeResponse[]>(endpoints.GET_VIRTUAL_MONEY);
 }
 
 export { PersonApi };

@@ -1,4 +1,4 @@
-import { getMe, getOneBy, getPosition } from './actions';
+import { getMe, getOneBy, getPosition, list } from './actions';
 
 class PersonProvider {
 
@@ -14,6 +14,15 @@ class PersonProvider {
 
   public findOne(id: string) {
     return getOneBy(id);
+  }
+
+  public list(
+    page = 1,
+    itemsPerPage = 10,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    filters: { [key: string]: any },
+  )  {
+    return list(page, itemsPerPage, filters)
   }
 
   public position(position: { [key: string]: any }) {
