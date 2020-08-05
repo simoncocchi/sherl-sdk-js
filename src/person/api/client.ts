@@ -13,7 +13,7 @@ class PersonApi {
    * @memberof MeApi
    */
   public static getMe = () =>
-    fetcher.get<IMeResponse[]>(endpoints.GET_ME);
+    fetcher.get<IMeResponse>(endpoints.GET_ME);
 }
 
 export { PersonApi };
