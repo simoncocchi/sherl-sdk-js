@@ -1,6 +1,9 @@
+import { ApiResponse } from '../../common/api';
 import { Pagination } from '../../common/api';
 import { IPublicCategoryWithSubResponse, IPublicSubCategoryResponse, IPublicCategoryResponse  } from '../types';
 import { ProductApi } from '../api/client';
+
+
 
 export const getPublicCategoriesAndSub = async (): Promise<IPublicCategoryWithSubResponse[]> => {
   const response = await ProductApi.getPublicCategoriesAndSub();
@@ -8,7 +11,7 @@ export const getPublicCategoriesAndSub = async (): Promise<IPublicCategoryWithSu
 };
 
 export const getPublicCategoriesSlug = async (slug: { [key: string]: any },
-): Promise<Pagination<IPublicSubCategoryResponse[]>> => {
+): Promise<Pagination<IPublicSubCategoryResponse>> => {
   const response = await ProductApi.getPublicCategoriesSlug( slug);
 
   if (response.status !== 200) {

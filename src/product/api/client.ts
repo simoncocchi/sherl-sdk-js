@@ -109,7 +109,7 @@ class ProductApi {
    * @memberof ProductApi
    */
   public static getPublicCategoriesSlug = (slug: { [key: string]: any }) =>
-    fetcher.get<Pagination<IPublicSubCategoryResponse[]>>(
+    fetcher.get<Pagination<IPublicSubCategoryResponse>>(
       endpoints.GET_PUBLIC_CATEGORIES_SLUG,
       { slug },
     );
