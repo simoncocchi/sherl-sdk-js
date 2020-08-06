@@ -19,7 +19,11 @@ export interface IMeResponse {
   type: string;
 }
 
+<<<<<<< HEAD
 export interface ILemonwayResponse {
+=======
+export interface ILemonwayResponse { // ????????? une reponse dans un tableau ? 
+>>>>>>> 30f19296486571e08023f711e1ef6d0fbdd9e19f
   cards: [ICardsResponse[]]
 }
 export interface ICardsResponse {
@@ -63,6 +67,10 @@ export interface IAddressResponse {
   streetAddress: string;
 }
 
+<<<<<<< HEAD
 export interface IFavoritesResponse { 
+=======
+export interface IFavoritesResponse { // ????????? pas de propiété sur le JSON
+>>>>>>> 30f19296486571e08023f711e1ef6d0fbdd9e19f
   organizationFavorites: string;
 }

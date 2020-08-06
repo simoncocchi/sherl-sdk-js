@@ -1,16 +1,16 @@
 import { getMe } from './actions';
 
-class MeProvider {
+class PersonProvider {
 
   /**
    * Get Me.
    *
    * @returns
-   * @memberof MeProvider
+   * @memberof PersonProvider
    */
-  public list() {
+  public me() {
     return getMe();
   }
 }
 
-export { MeProvider };
+export { PersonProvider };

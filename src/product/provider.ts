@@ -1,4 +1,9 @@
-import { getProducts, getProduct, getPublicProduct, getPublicProductBySlug, getPublicProducts } from './actions';
+import { getProducts, getProduct } from './actions';
+import {
+  getPublicProduct,
+  getPublicProductBySlug,
+  getPublicProducts,
+} from './actions';
 import { getCategories } from './actions/get-categories.action';
 import {
   getPublicCategories,
@@ -33,7 +38,7 @@ class ProductProvider {
 
   //********************************************************************************* PUBLIC **********************************************************************************/
 
-    /**
+  /**
    * Get categories.
    *
    *
