@@ -5,7 +5,7 @@ import { errorFactory } from '../errors';
 
 const fetcher = new Fetcher(errorFactory);
 
-class MeApi {
+class PersonApi {
   /**
    * Get Me.
    *
@@ -13,7 +13,7 @@ class MeApi {
    * @memberof MeApi
    */
   public static getMe = () =>
-    fetcher.get<IMeResponse[]>(endpoints.GET_ME);
+    fetcher.get<IMeResponse>(endpoints.GET_ME);
 }
 
-export { MeApi };
+export { PersonApi };
