@@ -26,6 +26,23 @@ class ProductApi {
     });
 
   /**
+   * Get list of products from public endpoint.
+   *
+   * @static
+   * @memberof ProductApi
+   */
+  public static getPublicProducts = (
+    page = 1,
+    itemsPerPage = 10,
+    filters: { [key: string]: any },
+  ) =>
+    fetcher.get<Pagination<IProductResponse[]>>(endpoints.GET_PUBLIC_PRODUCTS, {
+      page,
+      itemsPerPage,
+      ...filters,
+    });
+
+  /**
    * Get one product.
    *
    * @static
@@ -43,9 +60,20 @@ class ProductApi {
    * @memberof ProductApi
    */
   public static getCategories = (organizationId: string) =>
-    fetcher.get<ICategoryResponse[]>(endpoints.CATEGORIES, {
+    fetcher.get<ICategoryResponse[]>(endpoints.CATEGORIES_ALL, {
       organizationId,
     });
+
+  /**
+   * Get categories by parent ID.
+   *
+   * @static
+   * @memberof ProductApi
+   */
+  public static getCategoriesById = (categoryId: string) =>
+    fetcher.get<ICategoryResponse[]>(
+      StringUtils.bindContext(endpoints.GET_CATEGORY, { id: categoryId }),
+    );
 }
 
 export { ProductApi };
