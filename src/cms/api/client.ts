@@ -42,10 +42,10 @@ class CmsApi {
    * @static
    * @memberof CmsApi
    */
-  public static getContentSlug = (organizationId: string) =>
-    fetcher.get<ICmsResponse>(endpoints.GET_CONTENT_SLUG, {
-      organizationId,
-    });
+  public static getContentSlug = (slug: string) =>
+  fetcher.get<ICmsResponse>(
+    StringUtils.bindContext(endpoints.GET_CONTENT_SLUG, { slug }),
+  );
 }
 
 export { CmsApi };
