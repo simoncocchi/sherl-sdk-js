@@ -4,7 +4,7 @@ type Err = 'fetch-failed' | 'not-found';
 
 export const errors = {
   'fetch-failed': 'Failed to fetch products API',
-  'not-found': 'Product not found',
+  'not-found': 'Person not found',
 };
 
 export const errorFactory = new ErrorFactory<Err>('person', 'Person', errors);
