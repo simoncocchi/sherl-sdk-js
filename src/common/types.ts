@@ -1,4 +1,4 @@
-export interface IPlaceResponse {
+export interface IPlace {
   id: string;
   uri: string;
   country: string;
@@ -20,7 +20,7 @@ export interface IPlaceResponse {
   isDefault: boolean;
 }
 
-export interface IAddressResponse {
+export interface IAddress {
   id: string;
   country: string;
   locality: string;
@@ -37,7 +37,7 @@ export interface IAddressResponse {
   uri: string;
 }
 
-export interface IGeoCoordinatesResponse extends IAddressResponse {
+export interface IGeoCoordinates extends IAddress{
   latitude: number;
   longitude: number;
 }

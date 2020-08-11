@@ -9,8 +9,6 @@ To retrieve user information.
 
 ```ts
 const me = await sherl.person().me();
-// If you want a particular information inside me
-me['email'];
 ```
 
 Return object
@@ -23,14 +21,14 @@ Return object
   userId: string;
   firstName: string;
   lastName: string;
-  address: IPlaceResponse;
-  myAddresses: IPlaceResponse[];
-  subscriptionLocation: IGeoCoordinatesResponse;
+  address: IPlace;
+  myAddresses: IPlace[];
+  subscriptionLocation: IGeoCoordinates;
   phoneNumber: string;
   mobilePhoneNumber: string;
   faxNumber: string;
   nationality: string;
-  affiliation: IOrganizationResponse;
+  affiliation: IOrganization;
   birthDate: Date;
   email: string;
   gender: string;
@@ -38,20 +36,20 @@ Return object
   longitude: number;
   jobTitle: string;
   enabled: boolean;
-  legalNotice: ILegalNoticeResponse;
-  privacyPolicy: IPrivacyPolicyResponse;
+  legalNotice: ILegalNotice;
+  privacyPolicy: IPrivacyPolicy;
   createdAt: Date;
   updatedAt: Date;
-  picture: IImageObjectResponse;
-  settings: ISettingsResponse;
+  picture: IImageObject;
+  settings: ISettings;
   organizationFavorites: string[];
   mangopayUserId: string;
   mangopayWalletId: string;
-  mangopayCards: IMangopayCardResponse[];
-  stripe: IStripeResponse;
-  lemonway: ILemonwayResponse;
-  type: IPersonTypeEnumResponse;
-  frequentedEstablishments: IFrequentedEstablishmentsResponse[];
+  mangopayCards: IMangopayCard[];
+  stripe: IStripe;
+  lemonway: ILemonway;
+  type: IPersonTypeEnum;
+  frequentedEstablishments: IFrequentedEstablishments[];
   metadatas: { [key: string]: any };
   statistics: {
     lastVisit: Date;
@@ -59,7 +57,7 @@ Return object
     totalVisit: number;
     amountLastOrder: number;
     amountTotalOrder: number;
-    frequentedEstablishments: IFrequentedEstablishmentsResponse[];
+    frequentedEstablishments: IFrequentedEstablishments[];
     loyalCustomer: boolean;
   };
 }

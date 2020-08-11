@@ -1,4 +1,4 @@
-import { IGeoCoordinatesResponse, IPlaceResponse } from '../common/types';
+import { IGeoCoordinates, IPlace } from '../common/types';
 
 export interface IPersonMeResponse {
   id: string;
@@ -7,14 +7,14 @@ export interface IPersonMeResponse {
   userId: string;
   firstName: string;
   lastName: string;
-  address: IPlaceResponse;
-  myAddresses: IPlaceResponse[];
-  subscriptionLocation: IGeoCoordinatesResponse;
+  address: IPlace;
+  myAddresses: IPlace[];
+  subscriptionLocation: IGeoCoordinates;
   phoneNumber: string;
   mobilePhoneNumber: string;
   faxNumber: string;
   nationality: string;
-  affiliation: IOrganizationResponse;
+  affiliation: IOrganization;
   birthDate: Date;
   email: string;
   gender: string;
@@ -22,20 +22,20 @@ export interface IPersonMeResponse {
   longitude: number;
   jobTitle: string;
   enabled: boolean;
-  legalNotice: ILegalNoticeResponse;
-  privacyPolicy: IPrivacyPolicyResponse;
+  legalNotice: ILegalNotice;
+  privacyPolicy: IPrivacyPolicy;
   createdAt: Date;
   updatedAt: Date;
-  picture: IImageObjectResponse;
-  settings: ISettingsResponse;
+  picture: IImageObject;
+  settings: ISettings;
   organizationFavorites: string[];
   mangopayUserId: string;
   mangopayWalletId: string;
-  mangopayCards: IMangopayCardResponse[];
-  stripe: IStripeResponse;
-  lemonway: ILemonwayResponse;
-  type: IPersonTypeEnumResponse;
-  frequentedEstablishments: IFrequentedEstablishmentsResponse[];
+  mangopayCards: IMangopayCard[];
+  stripe: IStripe;
+  lemonway: ILemonway;
+  type: IPersonTypeEnum;
+  frequentedEstablishments: IFrequentedEstablishments[];
   metadatas: { [key: string]: any };
   statistics: {
     lastVisit: Date;
@@ -43,24 +43,24 @@ export interface IPersonMeResponse {
     totalVisit: number;
     amountLastOrder: number;
     amountTotalOrder: number;
-    frequentedEstablishments: IFrequentedEstablishmentsResponse[];
+    frequentedEstablishments: IFrequentedEstablishments[];
     loyalCustomer: boolean;
   };
 }
 
-export interface IImageObjectResponse {
+export interface IImageObject {
   id?: string;
   consumerId?: string;
   domain?: string;
   uri?: string;
   width?: number;
   height?: number;
-  caption: IMediaObjectResponse;
-  thumbnail?: IImageObjectResponse;
+  caption: IMediaObject;
+  thumbnail?: IImageObject;
   createdAt?: Date;
 }
 
-export interface IMediaObjectResponse {
+export interface IMediaObject {
   contentUrl: string;
   description?: string;
   duration?: string;
@@ -70,14 +70,14 @@ export interface IMediaObjectResponse {
   id: string;
 }
 
-export interface IPersonTypeEnumResponse {
+export interface IPersonTypeEnum {
   frequentedEstablishment: {
     organizationId: string;
     isCustomer: boolean;
   };
 }
 
-export interface IMangopayCardResponse {
+export interface IMangopayCard {
   ExpirationDate: string;
   Alias: string;
   CardType: string;
@@ -95,17 +95,17 @@ export interface IMangopayCardResponse {
   default: boolean;
 }
 
-export interface ILemonwayResponse {
+export interface ILemonway {
   customerId: string;
-  cards: ILemonwayCardResponse[];
+  cards: ILemonwayCard[];
 }
 
-export interface IStripeResponse {
+export interface IStripe {
   customerId: string;
-  cards: IStripeCardResponse[];
+  cards: IStripeCard[];
 }
 
-export interface ILemonwayCardResponse {
+export interface ILemonwayCard {
   id: number;
   transactionId: number;
   is3DS: boolean;
@@ -117,7 +117,7 @@ export interface ILemonwayCardResponse {
   webKitToken: string;
 }
 
-export interface IStripeCardResponse {
+export interface IStripeCard {
   id: string;
   object: string;
   address_city: string;
@@ -144,7 +144,7 @@ export interface IStripeCardResponse {
   default: boolean;
 }
 
-export interface IFrequentedEstablishmentsResponse {
+export interface IFrequentedEstablishments {
   organizationId: string;
   organizationName: string;
   firstVisit: Date;
@@ -152,12 +152,12 @@ export interface IFrequentedEstablishmentsResponse {
   isCustomer: boolean;
 }
 
-export interface IPrivacyPolicyResponse {
+export interface IPrivacyPolicy {
   version: string;
   dateOfAcceptance: Date;
 }
 
-export interface ISettingsResponse {
+export interface ISettings {
   notifications: {
     emailEnable: boolean;
     smsEnable: boolean;
@@ -165,19 +165,19 @@ export interface ISettingsResponse {
   };
 }
 
-interface ILegalNoticeResponse {
+interface ILegalNotice {
   version: string;
   dateOfAcceptance: Date;
 }
 
-interface IOrganizationResponse {
-  location: ILocationResponse;
+interface IOrganization {
+  location: ILocation;
   types: string[];
   id: string;
   employees: any[];
   founders: any[];
   knowsLanguage: any[];
-  openingHoursSpecification: IOpeningHoursSpecificationResponse[];
+  openingHoursSpecification: IOpeningHoursSpecification[];
   photos: any[];
   serviceType: IServiceTypeResonse[];
   isPaymentAllowed: boolean;
@@ -191,19 +191,19 @@ export interface IServiceTypeResonse {
   parent: null;
   childrens: any[];
   id: string;
-  values: IValueResponse[];
+  values: IValue[];
   uri: string;
   code: string;
   createdAt: string;
 }
 
-export interface IValueResponse {
+export interface IValue {
   language: string;
   value: string;
   createdAt: string;
 }
 
-export interface ILocationResponse {
+export interface ILocation {
   id: string;
   country: string;
   locality: string;
@@ -214,7 +214,7 @@ export interface ILocationResponse {
   longitude: string;
 }
 
-export interface IOpeningHoursSpecificationResponse {
+export interface IOpeningHoursSpecification {
   id: string;
   dayOfWeek: string;
   closes: Date;
@@ -223,7 +223,7 @@ export interface IOpeningHoursSpecificationResponse {
   validThrough: Date;
 }
 
-export interface ILemonwayCardResponse {
+export interface ILemonwayCard {
   id: number;
   transactionId: number;
   is3DS: boolean;
