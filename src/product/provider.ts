@@ -21,6 +21,24 @@ class ProductProvider {
     return getProducts(page, itemsPerPage, filters);
   }
 
+  /**
+   * Get list of products from public endpoint.
+   *
+   * @param {number} [page=1]
+   * @param {number} [itemsPerPage=10]
+   * @param {{ [key: string]: any }} filters
+   * @returns
+   * @memberof ProductProvider
+   */
+  public publicList(
+    page = 1,
+    itemsPerPage = 10,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    filters: { [key: string]: any },
+  ) {
+    return getPublicProducts(page, itemsPerPage, filters);
+  }
+
   public one(id: string) {
     return getProduct(id);
   }

@@ -26,6 +26,23 @@ class ProductApi {
     });
 
   /**
+   * Get list of products from public endpoint.
+   *
+   * @static
+   * @memberof ProductApi
+   */
+  public static getPublicProducts = (
+    page = 1,
+    itemsPerPage = 10,
+    filters: { [key: string]: any },
+  ) =>
+    fetcher.get<Pagination<IProductResponse[]>>(endpoints.GET_PUBLIC_PRODUCTS, {
+      page,
+      itemsPerPage,
+      ...filters,
+    });
+
+  /**
    * Get one product.
    *
    * @static
