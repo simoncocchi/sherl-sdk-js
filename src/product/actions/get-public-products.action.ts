@@ -7,7 +7,11 @@ export const getPublicProducts = async (
   itemsPerPage = 10,
   filters: { [key: string]: any },
 ): Promise<Pagination<IPublicProductResponse[]>> => {
-  const response = await ProductApi.getPublicProducts(page, itemsPerPage, filters);
+  const response = await ProductApi.getPublicProducts(
+    page,
+    itemsPerPage,
+    filters,
+  );
 
   if (response.status !== 200) {
     throw new Error(

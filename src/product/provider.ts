@@ -1,15 +1,14 @@
-import { getProducts, getProduct } from './actions';
 import {
+  getProducts,
+  getProduct,
   getPublicProduct,
   getPublicProductBySlug,
-  getPublicProducts,
-} from './actions';
-import { getCategories } from './actions/get-categories.action';
-import {
-  getPublicCategories,
-  getPublicCategoriesSlug,
   getPublicCategoriesAndSub,
-} from './actions/get-public-categories.action';
+  getPublicCategoriesSlug,
+  getPublicProducts,
+  getPublicCategories,
+  getCategories,
+} from './actions';
 
 class ProductProvider {
   public list(

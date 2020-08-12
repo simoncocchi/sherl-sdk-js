@@ -1,10 +1,4 @@
-import { IProductResponse, ICategoryResponse } from '../types';
-import {
-  IPublicCategoryWithSubResponse,
-  IPublicSubCategoryResponse,
-  IPublicCategoryResponse,
-  IPublicProductResponse,
-} from '../types';
+import { IProductResponse, ICategoryResponse, IPublicProductResponse, IPublicCategoryResponse} from '../types';
 import { Pagination } from '../../common/api';
 import { StringUtils } from '../../common/utils/string';
 import { endpoints } from './endpoints';
@@ -103,7 +97,7 @@ class ProductApi {
    * @memberof ProductApi
    */
   public static getPublicCategories = () =>
-    fetcher.get<IPublicCategoryWithSubResponse[]>(
+    fetcher.get<IPublicCategoryResponse[]>(
       endpoints.GET_PUBLIC_CATEGORIES,
     );
 
@@ -114,7 +108,7 @@ class ProductApi {
    * @memberof ProductApi
    */
   public static getPublicCategoriesSlug = (slug: { [key: string]: any }) =>
-    fetcher.get<Pagination<IPublicSubCategoryResponse>>(
+    fetcher.get<Pagination<IPublicCategoryResponse>>(
       endpoints.GET_PUBLIC_CATEGORIES_SLUG,
       { slug },
     );
@@ -126,7 +120,7 @@ class ProductApi {
    * @memberof ProductApi
    */
   public static getPublicCategoriesAndSub = () =>
-    fetcher.get<IPublicCategoryWithSubResponse[]>(
+    fetcher.get<IPublicCategoryResponse[]>(
       endpoints.GET_PUBLIC_CATEGORIES_AND_SUB,
     );
 }

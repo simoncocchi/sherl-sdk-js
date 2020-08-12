@@ -1,29 +1,19 @@
 import { ApiResponse } from '../../common/api';
-import { Pagination } from '../../common/api';
-import { IPublicCategoryWithSubResponse, IPublicSubCategoryResponse, IPublicCategoryResponse  } from '../types';
+import { IPublicCategoryResponse } from '../types';
 import { ProductApi } from '../api/client';
 
+export const getPublicCategories = async (): Promise<IPublicCategoryResponse[]> => {
+  let response: ApiResponse<IPublicCategoryResponse[]> | null = null;
 
-
-export const getPublicCategoriesAndSub = async (): Promise<IPublicCategoryWithSubResponse[]> => {
-  const response = await ProductApi.getPublicCategoriesAndSub();
-  return response.data;
-};
-
-export const getPublicCategoriesSlug = async (slug: { [key: string]: any },
-): Promise<Pagination<IPublicSubCategoryResponse>> => {
-  const response = await ProductApi.getPublicCategoriesSlug( slug);
-
-  if (response.status !== 200) {
-    throw new Error(
-      `Failed to fetch products API (status: ${response.status})`,
-    );
+  try {
+    response = await ProductApi.getPublicCategories();
+  } catch ({ name, response: responseError, stack, isAxiosError, ...rest }) {
+    throw new Error('Cannot reach API');
   }
 
-  return response.data;
-};
+  if (response) {
+    return response.data;
+  }
 
-export const getPublicCategories = async (): Promise<IPublicCategoryResponse[]> => {
-  const response = await ProductApi.getPublicCategories();
-  return response.data;
+  throw new Error('Empty response from API');
 };

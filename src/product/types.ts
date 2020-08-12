@@ -20,115 +20,216 @@ export interface IProductResponse {
   slogan: string;
   description: string;
   categoryUri: string;
-  offers: IOfferResponse[];
-  metadatas: IMetadatasResponse;
-  options: IOptionResponse[];
+  offers: IOffer[];
+  metadatas: IMetadatas;
+  options: IOption[];
   organizationUri: string;
   createdAt: string;
   updatedAt: string;
   category: null;
 }
 
-export interface IMetadatasResponse {
+export interface IMetadatas {
   degreeOfAlcohol: string;
 }
 
-export interface IOfferResponse {
+export interface IOffer {
   price: number;
   taxRate: number;
   priceTaxIncluded: number;
 }
 
-export interface IOptionResponse {
-  id: string;
-  items: IItemResponse[];
-  name: string;
-  required: boolean;
-  rangeMin: number;
-}
-
-export interface IItemResponse {
+export interface IItem {
   name: string;
   priceTaxIncluded: number;
 }
 
+//******************************************************************************** ************************************************************************************ */
 
-//******************************************************************************** PUBLIC ************************************************************************************ */
-
-export interface IPublicCategoryWithSubResponse {
+export interface IPublicProductResponse {
   id: string;
   uri: string;
   consumerId: string;
-  createdAt: string;
+  type: ShopProductTypeEnum;
+  parentUri: string;
+  parent: IPublicProductResponse;
   name: string;
   slug: string;
+  slogan: string;
+  description: string;
+  categoryUri: string;
+  categoryUris: string[];
+  category: IPublicCategoryResponse;
+  categories: IPublicCategoryResponse[];
+  isEnable: boolean;
+  offers: IOffer[];
+  metadatas: any;
+  options: IOption[];
   organizationUri: string;
-  subCategories?: IPublicSubCategoryResponse[];
+  isCustom: boolean;
+  photos: IImageObject[];
+  restrictions: { [key: string]: string[] };
+  createdAt: Date;
+  updatedAt: Date;
 }
 
-export interface IPublicSubCategoryResponse {
+export interface IOption {
   id: string;
-  uri: string;
-  consumerId: string;
-  createdAt: string;
-  parentUri: string;
   name: string;
-  slug: string;
-  organizationUri: string;
+  items: IOptionItem[];
+  required: boolean;
+  multiple: boolean;
+  rangeMin: number;
+  rangeMax: number;
+}
+
+export interface IOptionItem {
+  name: string;
+  priceTaxIncluded: number;
+  available: boolean;
+}
+
+export interface IOffer {
+  priceDiscount: number;
+  price: number;
+  priceTaxIncluded: number;
+  taxRate: number;
+  frequency: OfferFrequencyEnum;
+}
+
+export enum OfferFrequencyEnum {
+  ONCE = 'once',
+  MONTHLY = 'monthly',
+  YEARLY = 'yearly',
+}
+
+export interface IImageObject {
+  id: string;
+  consumerId: string;
+  domain: string;
+  uri: string;
+  width: number;
+  height: number;
+  caption: IMediaObject;
+  thumbnail: IImageObject;
+  createdAt: Date;
+}
+
+export interface IMediaObject {
+  contentUrl: string;
+  description: string;
+  duration: string;
+  encodingFormat: string;
+  size: number;
+  name: string;
+  id: string;
 }
 
 export interface IPublicCategoryResponse {
   id: string;
   uri: string;
   consumerId: string;
-  createdAt: string;
+  parentUri: string;
+  globalUri: string;
+  parent: IPublicCategoryResponse;
+  color: string;
   name: string;
   slug: string;
+  taxeValue: number;
+  position: number;
   organizationUri: string;
+  subCategories: IPublicCategoryResponse[];
+  createdAt: Date;
+  updatedAt: Date;
+  aggCategory: string;
+  is: false;
+  // seo: SEO; Besoin de SEO ? Je ne l'ai pas dans mes interfaces 
 }
 
-export interface IPublicProductResponse {
-  isEnable: boolean;
-  id: string;
-  uri: string;
-  consumerId: string;
-  createdAt: string;
-  updatedAt: string;
-  type: string;
-  name: string;
-  slug: string;
-  slogan: string;
-  description:string;
-  categoryUri: string;
-  categoryUris: [];
-  offers: [IOfferResponse];
-  metadatas: IMetadataResponse;
-  options: [];
-  photos: [];
-  category: ICategoryInProductResponse;
-
+export enum ShopProductTypeEnum {
+  CREDIT = 'CREDIT',
+  DEFAULT = 'DEFAULT',
+  ROOM = 'ROOM',
+  TIP = 'TIP',
+  SERVICE = 'SERVICE',
+  PLAN = 'PLAN',
+  QUOTA = 'QUOTA',
+  REFUND = 'REFUND', // Un avoir
 }
 
-export interface IOfferResponse {
-    _id: string;
-    price: number;
-    taxRate: number;
-    priceTaxIncluded: number;
-}
+// export interface CategoryWithSubResponse {
+//   id: string;
+//   uri: string;
+//   consumerId: string;
+//   createdAt: string;
+//   name: string;
+//   slug: string;
+//   organizationUri: string;
+//   subCategories: SubCategoryResponse[];
+// }
 
-export interface IMetadataResponse {
-  quotaType: string;
-  quotaValue: number;
-}
+// export interface SubCategoryResponse {
+//   id: string;
+//   uri: string;
+//   consumerId: string;
+//   createdAt: string;
+//   parentUri: string;
+//   name: string;
+//   slug: string;
+//   organizationUri: string;
+// }
 
-export interface ICategoryInProductResponse {
-  id: string;
-  uri: string;
-  consumerId: string;
-  createdAt: string;
-  updatedAt: string;
-  name: string;
-  slug: string;
-  organizationUri: string;
-  isPublic: boolean;
-}
+// export interface CategoryResponse {
+//   id: string;
+//   uri: string;
+//   consumerId: string;
+//   createdAt: string;
+//   name: string;
+//   slug: string;
+//   organizationUri: string;
+// }
+
+// export interface ProductResponse {
+//   isEnable: boolean;
+//   id: string;
+//   uri: string;
+//   consumerId: string;
+//   createdAt: string;
+//   updatedAt: string;
+//   type: string;
+//   name: string;
+//   slug: string;
+//   slogan: string;
+//   description: string;
+//   categoryUri: string;
+//   categoryUris: [];
+//   offers: [IOfferResponse];
+//   metadatas: IMetadataResponse;
+//   options: [];
+//   photos: [];
+//   category: IPublicCategoryResponseInProductResponse;
+// }
+
+// export interface IOfferResponse {
+//   _id: string;
+//   price: number;
+//   taxRate: number;
+//   priceTaxIncluded: number;
+// }
+
+// export interface IMetadataResponse {
+//   quotaType: string;
+//   quotaValue: number;
+// }
+
+// export interface IPublicCategoryResponseInProductResponse {
+//   id: string;
+//   uri: string;
+//   consumerId: string;
+//   createdAt: string;
+//   updatedAt: string;
+//   name: string;
+//   slug: string;
+//   organizationUri: string;
+//   i: boolean;
+// }

@@ -2,3 +2,8 @@ export * from './get-products.action';
 export * from './get-product.action';
 export * from './get-public-products.action';
 export * from './get-public-product.action';
+export * from './get-categories.action';
+export * from './get-public-categories-slug.action';
+export * from './get-public-categories-subs.action';
+export * from './get-public-categories.action';
+export * from './get-public-product-slug.action';
