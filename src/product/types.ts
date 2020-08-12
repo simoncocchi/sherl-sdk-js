@@ -8,7 +8,7 @@ export interface ICategoryResponse {
   organizationUri: string;
   createdAt: string;
   updatedAt: string;
-  subCategories?: ICategoryResponse[];
+  subCategories: ICategoryResponse[];
 }
 
 export interface IProductResponse {
@@ -156,80 +156,3 @@ export enum ShopProductTypeEnum {
   QUOTA = 'QUOTA',
   REFUND = 'REFUND', // Un avoir
 }
-
-// export interface CategoryWithSubResponse {
-//   id: string;
-//   uri: string;
-//   consumerId: string;
-//   createdAt: string;
-//   name: string;
-//   slug: string;
-//   organizationUri: string;
-//   subCategories: SubCategoryResponse[];
-// }
-
-// export interface SubCategoryResponse {
-//   id: string;
-//   uri: string;
-//   consumerId: string;
-//   createdAt: string;
-//   parentUri: string;
-//   name: string;
-//   slug: string;
-//   organizationUri: string;
-// }
-
-// export interface CategoryResponse {
-//   id: string;
-//   uri: string;
-//   consumerId: string;
-//   createdAt: string;
-//   name: string;
-//   slug: string;
-//   organizationUri: string;
-// }
-
-// export interface ProductResponse {
-//   isEnable: boolean;
-//   id: string;
-//   uri: string;
-//   consumerId: string;
-//   createdAt: string;
-//   updatedAt: string;
-//   type: string;
-//   name: string;
-//   slug: string;
-//   slogan: string;
-//   description: string;
-//   categoryUri: string;
-//   categoryUris: [];
-//   offers: [IOfferResponse];
-//   metadatas: IMetadataResponse;
-//   options: [];
-//   photos: [];
-//   category: IPublicCategoryResponseInProductResponse;
-// }
-
-// export interface IOfferResponse {
-//   _id: string;
-//   price: number;
-//   taxRate: number;
-//   priceTaxIncluded: number;
-// }
-
-// export interface IMetadataResponse {
-//   quotaType: string;
-//   quotaValue: number;
-// }
-
-// export interface IPublicCategoryResponseInProductResponse {
-//   id: string;
-//   uri: string;
-//   consumerId: string;
-//   createdAt: string;
-//   updatedAt: string;
-//   name: string;
-//   slug: string;
-//   organizationUri: string;
-//   i: boolean;
-// }

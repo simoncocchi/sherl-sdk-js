@@ -8,6 +8,7 @@ import {
   getPublicProducts,
   getPublicCategories,
   getCategories,
+  getCategoriesById,
 } from './actions';
 
 class ProductProvider {
@@ -33,6 +34,17 @@ class ProductProvider {
    */
   public categories(organizationId: string) {
     return getCategories(organizationId);
+  }
+
+  /**
+   * Get categories by parent ID.
+   *
+   * @param {string} categoryId
+   * @returns
+   * @memberof ProductProvider
+   */
+  public categoriesById(categoryId: string) {
+    return getCategoriesById(categoryId);
   }
 
   //********************************************************************************* PUBLIC **********************************************************************************/

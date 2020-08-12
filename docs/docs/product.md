@@ -68,6 +68,56 @@ Return object
 }
 ```
 
+## Get Categories of an organization
+
+To retrieve Categories of an organization with organization Id
+
+```ts
+const categoriesbyid = await sherl.product().categoriesById("402a8a37-a716-4e78-b361-4b2c67d03a37");
+```
+
+Return object
+
+```ts
+{
+  id: string;
+  uri: string;
+  taxeValue: number;
+  consumerId: string;
+  parentUri: string;
+  name: string;
+  organizationUri: string;
+  createdAt: string;
+  updatedAt: string;
+  subCategories: ICategoryResponse[];
+}
+```
+
+## Get SubCategories of a Categorie
+
+To retrieve SubCategories of a Categorie with parent categorie ID
+
+```ts
+const categories = await sherl.product().categories("organizationID");
+```
+
+Return object
+
+```ts
+{
+  id: string;
+  uri: string;
+  taxeValue: number;
+  consumerId: string;
+  parentUri: string;
+  name: string;
+  organizationUri: string;
+  createdAt: string;
+  updatedAt: string;
+  subCategories: ICategoryResponse[];
+}
+```
+
 ## Get public product
 
 To retrieve public product list

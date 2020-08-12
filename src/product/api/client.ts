@@ -47,6 +47,17 @@ class ProductApi {
       organizationId,
     });
 
+  /**
+   * Get categories by parent ID.
+   *
+   * @static
+   * @memberof ProductApi
+   */
+    public static getCategoriesById = (categoryId: string) =>
+    fetcher.get<ICategoryResponse[]>(
+      StringUtils.bindContext(endpoints.GET_CATEGORY, { id: categoryId }),
+    );
+
   ///******************************************************************** */ PUBLIC ********************************************************************\\
   /**
    * Get public list of products.
