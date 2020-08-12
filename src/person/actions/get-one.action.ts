@@ -1,9 +1,9 @@
 import { ApiResponse } from '../../common/api';
-import { IMeResponse } from '../types';
+import { IPersonMeResponse } from '../types';
 import { PersonApi } from '../api/client';
 
-export const getOneBy = async (id: string): Promise<IMeResponse> => {
-  let response: ApiResponse<IMeResponse> | null = null;
+export const getOneBy = async (id: string): Promise<IPersonMeResponse> => {
+  let response: ApiResponse<IPersonMeResponse> | null = null;
 
   try {
     response = await PersonApi.getOneBy(id);

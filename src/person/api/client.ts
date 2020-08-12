@@ -1,4 +1,4 @@
-import { IMeResponse, IPosiionResponse} from '../types';
+import { IPersonMeResponse, ILocation} from '../types';
 import { endpoints } from './endpoints';
 import { Fetcher } from '../../common/api';
 import { errorFactory } from '../errors';
@@ -15,11 +15,11 @@ class PersonApi {
    * @memberof PersonApi
    */
   public static getMe = () =>
-    fetcher.get<IMeResponse[]>(endpoints.GET_ME);
+    fetcher.get<IPersonMeResponse>(endpoints.GET_ME);
   
 
   public static getOneBy = (id: string) =>
-  fetcher.get<IMeResponse>(
+  fetcher.get<IPersonMeResponse>(
     StringUtils.bindContext(endpoints.GET_ONE_BY_USERID, { id }),
   );
 
@@ -30,7 +30,7 @@ class PersonApi {
    * @memberof PersonApi
    */
   public static getPosition = (position: { [key: string]: any }) =>
-    fetcher.get<Pagination<IPosiionResponse[]>>(
+    fetcher.get<Pagination<ILocation[]>>(
       endpoints.GET_POSITION,
       { ...position },
     );
@@ -46,17 +46,17 @@ class PersonApi {
     itemsPerPage = 10,
     filters: { [key: string]: any },
   ) =>
-    fetcher.get<Pagination<IMeResponse[]>>(endpoints.GET_PERSONS, {
+    fetcher.get<Pagination<IPersonMeResponse[]>>(endpoints.GET_PERSONS, {
       page,
       itemsPerPage,
       ...filters,
     });
 
     public static getConfigs = () =>
-    fetcher.get<IMeResponse[]>(endpoints.GET_CONFIG);
+    fetcher.get<IPersonMeResponse[]>(endpoints.GET_CONFIG);
 
     public static getVirtualMoney = () =>
-    fetcher.get<IMeResponse[]>(endpoints.GET_VIRTUAL_MONEY);
+    fetcher.get<IPersonMeResponse[]>(endpoints.GET_VIRTUAL_MONEY);
 }
 
 export { PersonApi };

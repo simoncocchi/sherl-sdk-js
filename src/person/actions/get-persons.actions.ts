@@ -1,12 +1,12 @@
 import { Pagination } from '../../common/api';
-import { IMeResponse } from '../types';
+import { IPersonMeResponse } from '../types';
 import { PersonApi } from '../api/client';
 
 export const list = async (
   page = 1,
   itemsPerPage = 10,
   filters: { [key: string]: any },
-): Promise<Pagination<IMeResponse[]>> => {
+): Promise<Pagination<IPersonMeResponse[]>> => {
   const response = await PersonApi.list(page, itemsPerPage, filters);
 
   if (response.status !== 200) {
