@@ -100,12 +100,12 @@ export interface IOrderStatusHistory {
   status: number;
   userUri: string;
   createdAt: Date;
-  user: User;
+  // user: User;
   latitude: number;
   longitude: number;
 }
 
-export interface IOrderCommission extends mangopay.transfer.TransferData {
+export interface IOrderCommission { //extends mangopay.transfer.TransferData
   createdAt: Date;
 }
 
