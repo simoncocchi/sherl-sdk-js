@@ -1,8 +1,4 @@
-import { IProductResponse, ICategoryResponse,
-  IPublicCategoryWithSubResponse,
-  IPublicSubCategoryResponse,
-  IPublicCategoryResponse,
-  IPublicProductResponse } from '../types';
+import { IProductResponse, ICategoryResponse } from '../types';
 import { Pagination } from '../../common/api';
 import { StringUtils } from '../../common/utils/string';
 import { endpoints } from './endpoints';

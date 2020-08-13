@@ -5,11 +5,6 @@ import {
   getCategoriesById,
 } from './actions';
 import { getCategories } from './actions/get-categories.action';
-import {
-  getPublicCategories,
-  getPublicCategoriesSlug,
-  getPublicCategoriesAndSub,
-} from './actions/get-public-categories.action';
 
 class ProductProvider {
   public list(
@@ -53,6 +48,7 @@ class ProductProvider {
   public categories(organizationId: string) {
     return getCategories(organizationId);
   }
+
   /**
    * Get categories by parent ID.
    *
