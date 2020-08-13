@@ -134,7 +134,8 @@ const me = await sherl.person().list(1, 10);
 Return object
 
 ```ts
-[{
+{
+  "results":[{
   id: string;
   uri: string;
   consumerId: string;
