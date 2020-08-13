@@ -1,17 +1,19 @@
-import { IMeResponse } from '../types';
+import { ApiResponse } from '../../common/api';
+import { IPersonMeResponse } from '../types';
 import { PersonApi } from '../api/client';
 
-export const getMe = async (): Promise<IMeResponse[]> => {
-  const response = await PersonApi.getMe();
-  return response.data;
-};
+export const getMe = async (): Promise<IPersonMeResponse> => {
+  let response: ApiResponse<IPersonMeResponse> | null = null;
 
-export const getConfigs = async (): Promise<IMeResponse[]> => {
-  const response = await PersonApi.getConfigs();
-  return response.data;
-};
+  try {
+    response = await PersonApi.getMe();
+  } catch ({ name, response: responseError, stack, isAxiosError, ...rest }) {
+    throw new Error('Cannot reach API');
+  }
 
-export const getVirtualMoney = async (): Promise<IMeResponse[]> => {
-  const response = await PersonApi.getVirtualMoney();
-  return response.data;
+  if (response) {
+    return response.data;
+  }
+
+  throw new Error('Empty response from API');
 };
