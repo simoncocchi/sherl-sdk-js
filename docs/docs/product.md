@@ -14,28 +14,32 @@ const products = await sherl.product().list(1, 10);
 Return object
 
 ```ts
-[{
-  isEnable: boolean;
-  id: string;
-  uri: string;
-  consumerId: string;
-  name: string;
-  slogan: string;
-  description: string;
-  categoryUri: string;
-  offers: IOffer[];
-  metadatas: IMetadatas;
-  options: IOption[];
-  organizationUri: string;
-  createdAt: string;
-  updatedAt: string;
-  category: null;
-}],
+{
+  "results": [
+    {
+      isEnable: boolean;
+      id: string;
+      uri: string;
+      consumerId: string;
+      name: string;
+      slogan: string;
+      description: string;
+      categoryUri: string;
+      offers: IOffer[];
+      metadatas: IMetadatas;
+      options: IOption[];
+      organizationUri: string;
+      createdAt: string;
+      updatedAt: string;
+      category: null;
+    }
+  ],
   "view": {
     "total": number_of_item,
     "page": "1",
     "itemsPerPage": "10"
   }
+}
 ```
 
 ## Get one product
@@ -73,7 +77,9 @@ Return object
 To retrieve Categories of an organization with organization Id
 
 ```ts
-const categoriesbyid = await sherl.product().categoriesById("402a8a37-a716-4e78-b361-4b2c67d03a37");
+const categoriesbyid = await sherl
+  .product()
+  .categoriesById('402a8a37-a716-4e78-b361-4b2c67d03a37');
 ```
 
 Return object
@@ -98,7 +104,7 @@ Return object
 To retrieve SubCategories of a Categorie with parent categorie ID
 
 ```ts
-const categories = await sherl.product().categories("organizationID");
+const categories = await sherl.product().categories('organizationID');
 ```
 
 Return object
@@ -133,37 +139,41 @@ const urlproducts = await sherl
 Return object
 
 ```ts
-[{
-  id: string;
-  uri: string;
-  consumerId: string;
-  type: ShopProductTypeEnum;
-  parentUri: string;
-  parent: IPublicProductResponse;
-  name: string;
-  slug: string;
-  slogan: string;
-  description: string;
-  categoryUri: string;
-  categoryUris: string[];
-  category: IPublicCategoryResponse;
-  categories: IPublicCategoryResponse[];
-  isEnable: boolean;
-  offers: IOffer[];
-  metadatas: any;
-  options: IOption[];
-  organizationUri: string;
-  isCustom: boolean;
-  photos: IImageObject[];
-  restrictions: { [key: string]: string[] };
-  createdAt: Date;
-  updatedAt: Date;
-}],
+{
+  "results": [
+    {
+      id: string;
+      uri: string;
+      consumerId: string;
+      type: ShopProductTypeEnum;
+      parentUri: string;
+      parent: IPublicProductResponse;
+      name: string;
+      slug: string;
+      slogan: string;
+      description: string;
+      categoryUri: string;
+      categoryUris: string[];
+      category: IPublicCategoryResponse;
+      categories: IPublicCategoryResponse[];
+      isEnable: boolean;
+      offers: IOffer[];
+      metadatas: any;
+      options: IOption[];
+      organizationUri: string;
+      isCustom: boolean;
+      photos: IImageObject[];
+      restrictions: { [key: string]: string[] };
+      createdAt: Date;
+      updatedAt: Date;
+    }
+  ],
   "view": {
     "total": number_of_item,
     "page": "1",
     "itemsPerPage": "10"
   }
+}
 ```
 
 ## Get public product by id
