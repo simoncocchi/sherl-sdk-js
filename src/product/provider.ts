@@ -1,4 +1,9 @@
-import { getProducts, getProduct, getPublicProduct, getPublicProductBySlug, getPublicProducts } from './actions';
+import {
+  getProduct,
+  getProducts,
+  getPublicProducts,
+  getCategoriesById,
+} from './actions';
 import { getCategories } from './actions/get-categories.action';
 import {
   getPublicCategories,
@@ -16,6 +21,24 @@ class ProductProvider {
     return getProducts(page, itemsPerPage, filters);
   }
 
+  /**
+   * Get list of products from public endpoint.
+   *
+   * @param {number} [page=1]
+   * @param {number} [itemsPerPage=10]
+   * @param {{ [key: string]: any }} filters
+   * @returns
+   * @memberof ProductProvider
+   */
+  public publicList(
+    page = 1,
+    itemsPerPage = 10,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    filters: { [key: string]: any },
+  ) {
+    return getPublicProducts(page, itemsPerPage, filters);
+  }
+
   public one(id: string) {
     return getProduct(id);
   }
@@ -30,43 +53,15 @@ class ProductProvider {
   public categories(organizationId: string) {
     return getCategories(organizationId);
   }
-
-  //********************************************************************************* PUBLIC **********************************************************************************/
-
-    /**
-   * Get categories.
+  /**
+   * Get categories by parent ID.
    *
-   *
+   * @param {string} categoryId
    * @returns
    * @memberof ProductProvider
    */
-  public PublicCategoriesAndSub() {
-    return getPublicCategoriesAndSub();
-  }
-
-  public PublicCategoriesSlug(slug: { [key: string]: any }) {
-    return getPublicCategoriesSlug(slug);
-  }
-
-  public PublicCategories() {
-    return getPublicCategories();
-  }
-
-  public PublicProductById(id: string) {
-    return getPublicProduct(id);
-  }
-
-  public PublicProductBySlug(slug: string) {
-    return getPublicProductBySlug(slug);
-  }
-
-  public publicproductlist(
-    page = 1,
-    itemsPerPage = 10,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    filters: { [key: string]: any },
-  ) {
-    return getPublicProducts(page, itemsPerPage, filters);
+  public categoriesById(categoryId: string) {
+    return getCategoriesById(categoryId);
   }
 }
 

@@ -5,22 +5,60 @@ title: Person
 
 ## Get person me
 
+To retrieve user information.
+
 ```ts
 const me = await sherl.person().me();
-// If you want a particular information inside me 
-me["email"];
 ```
 
-
-## Get person findOneBy 
+Return object
 
 ```ts
- const personGetOneByUserId = await sherl.person().findOne("userId");
+{
+  id: string;
+  uri: string;
+  consumerId: string;
+  userId: string;
+  firstName: string;
+  lastName: string;
+  address: IPlace;
+  myAddresses: IPlace[];
+  subscriptionLocation: IGeoCoordinates;
+  phoneNumber: string;
+  mobilePhoneNumber: string;
+  faxNumber: string;
+  nationality: string;
+  affiliation: IOrganization;
+  birthDate: Date;
+  email: string;
+  gender: string;
+  latitude: number;
+  longitude: number;
+  jobTitle: string;
+  enabled: boolean;
+  legalNotice: ILegalNotice;
+  privacyPolicy: IPrivacyPolicy;
+  createdAt: Date;
+  updatedAt: Date;
+  picture: IImageObject;
+  settings: ISettings;
+  organizationFavorites: string[];
+  mangopayUserId: string;
+  mangopayWalletId: string;
+  mangopayCards: IMangopayCard[];
+  stripe: IStripe;
+  lemonway: ILemonway;
+  type: IPersonTypeEnum;
+  frequentedEstablishments: IFrequentedEstablishments[];
+  metadatas: { [key: string]: any };
+  statistics: {
+    lastVisit: Date;
+    firstVisit: Date;
+    totalVisit: number;
+    amountLastOrder: number;
+    amountTotalOrder: number;
+    frequentedEstablishments: IFrequentedEstablishments[];
+    loyalCustomer: boolean;
+  };
+}
 ```
-
-## Get person position 
-
-```ts
-const position = await sherl.person().position({ longitude: "your_longitude",latitude: "your_latitude"})
-```
-
