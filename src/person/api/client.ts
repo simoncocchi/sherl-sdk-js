@@ -1,4 +1,4 @@
-import { IMeResponse} from '../types';
+import { IPersonMeResponse} from '../types';
 import { endpoints } from './endpoints';
 import { Fetcher } from '../../common/api';
 import { errorFactory } from '../errors';
@@ -13,7 +13,7 @@ class PersonApi {
    * @memberof MeApi
    */
   public static getMe = () =>
-    fetcher.get<IMeResponse>(endpoints.GET_ME);
+    fetcher.get<IPersonMeResponse>(endpoints.GET_ME);
 }
 
 export { PersonApi };
