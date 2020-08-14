@@ -42,7 +42,7 @@ Return object
 
 ## Get loyalty 
 
-To retrieve one loyalty by organization id
+To retrieve one loyalty by organization id.
 
 ```ts
 const me = await sherl.loyalty().one("OrganizationID");
