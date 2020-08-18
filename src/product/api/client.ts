@@ -42,6 +42,25 @@ class ProductApi {
       ...filters,
     });
 
+   /**
+   * Get list comment of a product.
+   *
+   * @static
+   * @memberof ProductApi
+   */
+  public static getProductsComment = (
+    id: string,
+    page = 1,
+    itemsPerPage = 10,
+    filters: { [key: string]: any },
+  ) =>
+    fetcher.get<Pagination<IProductResponse[]>>(endpoints.GET_PRODUCTS, {
+      id,
+      page,
+      itemsPerPage,
+      ...filters,
+    });
+
   /**
    * Get one product.
    *

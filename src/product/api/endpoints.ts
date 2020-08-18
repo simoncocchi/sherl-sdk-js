@@ -9,4 +9,7 @@ export const endpoints = {
   GET_PUBLIC_CATEGORIES: '/api/public/shop/products/categories',
   GET_PUBLIC_CATEGORIES_SLUG: '/api/public/shop/products/categories/find-one-by-slug',
   GET_PUBLIC_CATEGORIES_AND_SUB: '/api/public/shop/products/categories-and-subcategories',
+  GET_COMMENT_PRODUCT: '/api/shop/products/:id/comments',
+  GET_LIKE_PRODUCT: '/api/shop/products/:id/like',
+  GET_VIEW_PRODUCT: '/api/shop/products/:id/views'
 };
