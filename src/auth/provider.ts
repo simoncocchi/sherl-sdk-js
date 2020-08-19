@@ -1,5 +1,5 @@
 import { registerBearerToken } from '../common/api';
-import { signInWithEmailAndPassword } from './actions';
+import { signInWithEmailAndPassword, getLogout, getImpersonate } from './actions';
 
 class AuthProvider {
   public token: string | undefined;
@@ -17,6 +17,14 @@ class AuthProvider {
     this.token = accessToken;
     registerBearerToken(accessToken);
   };
+
+  public impersonate (id: string) {
+      return getImpersonate(id);
+    }
+
+  public logout () {
+    return getLogout();
+  }
 }
 
 export { AuthProvider };

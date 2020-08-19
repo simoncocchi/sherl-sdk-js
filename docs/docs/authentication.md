@@ -20,3 +20,23 @@ promise.then(() => {
   console.log('Login successful');
 });
 ```
+
+## Logout 
+
+```ts
+const logout = await sherl.auth().logout()
+```
+
+## Impersonate
+
+```ts
+const impersonate = await sherl.auth().impersonate("impersonnate_id")
+```
+
+Return object 
+
+```ts
+{
+  access_token: string;
+}
+```
