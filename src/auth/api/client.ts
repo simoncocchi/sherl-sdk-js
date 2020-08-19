@@ -21,13 +21,11 @@ class AuthApi {
       });
 
   public static getImpersonate = (id: string) =>
-  fetcher.get<ApiLoginResponse>(
-    StringUtils.bindContext(endpoints.GET_IMPERSONATE, { id }),
-  );
+    fetcher.get<ApiLoginResponse>(
+      StringUtils.bindContext(endpoints.GET_IMPERSONATE, { id }),
+    );
 
-  public static getLogout = () =>
-  (endpoints.GET_LOGOUT);
-
+  public static getLogout = () => endpoints.GET_LOGOUT;
 }
 
 export { AuthApi };
