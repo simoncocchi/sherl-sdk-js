@@ -4,6 +4,8 @@ import {
   getPublicOrganizationBySlug,
   getPublicOrganization,
   getPublicOrganizations,
+  getOrganizationKyc,
+  getOrganizationRib
 } from './actions';
 
 class OrganizationProvider {
@@ -56,6 +58,28 @@ class OrganizationProvider {
    */
   public publicOneSlug(slug: string) {
     return getPublicOrganizationBySlug(slug);
+  }
+
+    /**
+   * Get organization rib by id.
+   *
+   * @param {string} Id
+   * @returns
+   * @memberof OrganizationProvider
+   */
+  public rib(slug: string) {
+    return getOrganizationRib(slug);
+  }
+
+    /**
+   * Get organization kyc by id.
+   *
+   * @param {string} Id
+   * @returns
+   * @memberof OrganizationProvider
+   */
+  public kyc(slug: string) {
+    return getOrganizationKyc(slug);
   }
 }
 

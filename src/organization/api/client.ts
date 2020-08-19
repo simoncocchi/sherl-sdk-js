@@ -1,4 +1,4 @@
-import { IOrganizationResponse } from '../types';
+import { IOrganizationResponse, IRibResponse, IKycResposne } from '../types';
 import { Pagination } from '../../common/api';
 import { StringUtils } from '../../common/utils/string';
 import { endpoints } from './endpoints';
@@ -68,6 +68,30 @@ class OrganizationApi {
   public static getPublicOrganizationBySlug = (slug: string) =>
   fetcher.get<IOrganizationResponse>(
     StringUtils.bindContext(endpoints.GET_PUBLIC_ORGANIZATION_SLUG, { slug }),
+  );
+
+
+  /**
+   * Get one Organization rib by id.
+   *
+   * @static
+   * @memberof OrganizationApi
+   */
+  public static getOrganizationRib = (id: string) =>
+  fetcher.get<IRibResponse>(
+    StringUtils.bindContext(endpoints.GET_RIB, { id }),
+  );
+
+
+  /**
+   * Get one public Organization KYC by id.
+   *
+   * @static
+   * @memberof OrganizationApi
+   */
+  public static getOrganizationKyc = (id: string) =>
+  fetcher.get<IKycResposne[]>(
+    StringUtils.bindContext(endpoints.GET_KYC, { id }),
   );
 }
 

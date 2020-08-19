@@ -6,6 +6,18 @@ import {
 } from '../person/types';
 import { ICategoryResponse, IProductResponse } from '../product/types';
 
+export interface IRibResponse {
+  bic: string;
+  iban: string;
+  id: string;
+  ibanId: string;
+  status: string;
+}
+
+export interface IKycResposne {
+
+}
+
 export interface IOrganizationResponse extends IModel {
   id: string;
   uri: string;

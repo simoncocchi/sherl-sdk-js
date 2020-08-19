@@ -544,3 +544,41 @@ Return object
     }
 }
 ```
+
+## Get organization rib 
+
+To retrieve organizations rib by id
+
+```ts
+const rib = await sherl.organization().rib("5d8e50d5-cd32-43bd-8a3b-dcddb9a1fb21")
+```
+
+Return object 
+
+```ts
+{
+  bic: string;
+  iban: string;
+  id: string;
+  ibanId: string;
+  status: string;
+}
+```
+
+## Get organization kyc 
+
+To retrieve organizations kyc by id
+
+```ts
+const kyc = await sherl.organization().kyc("5d8e50d5-cd32-43bd-8a3b-dcddb9a1fb21")
+```
+
+Return object 
+
+```ts
+[
+  {
+    
+  }
+]
+```
