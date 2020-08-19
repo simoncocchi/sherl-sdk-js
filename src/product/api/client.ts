@@ -1,4 +1,12 @@
-import { IProductResponse, ICategoryResponse, IPublicProductResponse, IPublicCategoryResponse} from '../types';
+import {
+  IProductResponse,
+  ICategoryResponse,
+  IPublicProductResponse,
+  IPublicCategoryResponse,
+  ICommentResponse,
+  ILikeResponse,
+  IViewResponse,
+} from '../types';
 import { Pagination } from '../../common/api';
 import { StringUtils } from '../../common/utils/string';
 import { endpoints } from './endpoints';
@@ -42,7 +50,7 @@ class ProductApi {
       ...filters,
     });
 
-   /**
+  /**
    * Get list comment of a product.
    *
    * @static
@@ -54,12 +62,60 @@ class ProductApi {
     itemsPerPage = 10,
     filters: { [key: string]: any },
   ) =>
-    fetcher.get<Pagination<IProductResponse[]>>(endpoints.GET_PRODUCTS, {
-      id,
-      page,
-      itemsPerPage,
-      ...filters,
-    });
+    fetcher.get<Pagination<ICommentResponse[]>>(
+      StringUtils.bindContext(endpoints.GET_COMMENT_PRODUCT, { id }),
+      (endpoints.GET_COMMENT_PRODUCT,
+      {
+        page,
+        itemsPerPage,
+        ...filters,
+      }),
+    );
+
+  /**
+   * Get list of like product.
+   *
+   * @static
+   * @memberof ProductApi
+   */
+  public static getProductsLike = (
+    id: string,
+    page = 1,
+    itemsPerPage = 10,
+    filters: { [key: string]: any },
+  ) =>
+    fetcher.get<Pagination<ICommentResponse[]>>(
+      StringUtils.bindContext(endpoints.GET_LIKE_PRODUCT, { id }),
+      (endpoints.GET_LIKE_PRODUCT,
+      {
+        page,
+        itemsPerPage,
+        ...filters,
+      }),
+    );
+
+  /**
+   * Get list of view product.
+   *
+   * @static
+   * @memberof ProductApi
+   */
+  public static getProductsViews = (
+    id: string,
+    page = 1,
+    itemsPerPage = 10,
+    filters: { [key: string]: any },
+  ) =>
+    fetcher.get<Pagination<IViewResponse[]>>(
+      StringUtils.bindContext(endpoints.GET_VIEW_PRODUCT, { id }),
+      (endpoints.GET_VIEW_PRODUCT,
+      {
+        id,
+        page,
+        itemsPerPage,
+        ...filters,
+      }),
+    );
 
   /**
    * Get one product.
@@ -89,7 +145,7 @@ class ProductApi {
    * @static
    * @memberof ProductApi
    */
-    public static getCategoriesById = (categoryId: string) =>
+  public static getCategoriesById = (categoryId: string) =>
     fetcher.get<ICategoryResponse[]>(
       StringUtils.bindContext(endpoints.GET_CATEGORY, { id: categoryId }),
     );
@@ -126,9 +182,7 @@ class ProductApi {
    * @memberof ProductApi
    */
   public static getPublicCategories = () =>
-    fetcher.get<IPublicCategoryResponse[]>(
-      endpoints.GET_PUBLIC_CATEGORIES,
-    );
+    fetcher.get<IPublicCategoryResponse[]>(endpoints.GET_PUBLIC_CATEGORIES);
 
   /**
    * Get public catégories ou avec slug.

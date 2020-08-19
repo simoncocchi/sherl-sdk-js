@@ -8,3 +8,6 @@ export * from './get-public-categories-subs.action';
 export * from './get-public-categories.action';
 export * from './get-public-product-slug.action';
 export * from './get-categories-by-id.action';
+export * from './get-products-comments.actions'
+export * from './get-products-like.actions'
+export * from './get-products-views.actions'

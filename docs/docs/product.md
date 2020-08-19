@@ -351,3 +351,52 @@ Return object
   is: false;
 }]
 ```
+
+## Get product comment
+
+To retrieve comment on a product with id
+
+```ts
+const productcomment = await sherl.product().commentList("product_id",page ,items_per_page, {your_key: "your_value"})
+```
+
+Return object
+
+```ts
+{
+  "results": [
+    {
+      mon objet
+    }
+  ],
+  "view": {
+    "total": 0,
+    "page": "1",
+    "itemsPerPage": "2"
+  }
+}
+```
+
+## Get like product
+
+To retrieve comment you like
+```ts
+const productcomment = await sherl.product().commentList("product_id",page ,items_per_page, {your_key: "your_value"})
+```
+
+Return object
+
+```ts
+{
+  "results": [
+    {
+      mon objet
+    }
+  ],
+  "view": {
+    "total": 0,
+    "page": "1",
+    "itemsPerPage": "2"
+  }
+}
+```

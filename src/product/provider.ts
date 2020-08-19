@@ -9,6 +9,9 @@ import {
   getPublicCategories,
   getCategories,
   getCategoriesById,
+  getProductsComment,
+  getProductsLike,
+  getProductsViews,
 } from './actions';
 
 class ProductProvider {
@@ -19,6 +22,36 @@ class ProductProvider {
     filters: { [key: string]: any },
   ) {
     return getProducts(page, itemsPerPage, filters);
+  }
+
+  public commentList(
+    id: string,
+    page = 1,
+    itemsPerPage = 10,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    filters: { [key: string]: any },
+  ) {
+    return getProductsComment(id, page, itemsPerPage, filters);
+  }
+
+  public likeList(
+    id: string,
+    page = 1,
+    itemsPerPage = 10,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    filters: { [key: string]: any },
+  ) {
+    return getProductsLike(id, page, itemsPerPage, filters);
+  }
+
+  public viewList(
+    id: string,
+    page = 1,
+    itemsPerPage = 10,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    filters: { [key: string]: any },
+  ) {
+    return getProductsViews(id, page, itemsPerPage, filters);
   }
 
   /**

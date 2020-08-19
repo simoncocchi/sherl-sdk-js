@@ -1,3 +1,15 @@
+export interface ICommentResponse {
+
+}
+
+export interface ILikeResponse {
+  
+}
+
+export interface IViewResponse {
+  
+}
+
 export interface ICategoryResponse {
   id: string;
   uri: string;
