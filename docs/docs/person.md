@@ -213,3 +213,25 @@ Return object
   longitude: string;
 }
 ```
+
+## Get user config
+
+To retrieve pro user config
+
+```ts
+const me = await sherl.person().config();
+```
+
+Return object
+
+```ts
+{
+  id: string;
+  code: string;
+  value: any;
+  consumer: string;
+  position: number;
+  appliedTo?: string;
+  isPublic?: boolean;
+}
+```

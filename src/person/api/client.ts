@@ -1,4 +1,4 @@
-import { IPersonMeResponse, ILocation} from '../types';
+import { IPersonMeResponse, ILocation, IConfigResponse} from '../types';
 import { endpoints } from './endpoints';
 import { Fetcher } from '../../common/api';
 import { errorFactory } from '../errors';
@@ -53,7 +53,7 @@ class PersonApi {
     });
 
     public static getConfigs = () =>
-    fetcher.get<IPersonMeResponse[]>(endpoints.GET_CONFIG);
+    fetcher.get<IConfigResponse[]>(endpoints.GET_CONFIG);
 
     public static getVirtualMoney = () =>
     fetcher.get<IPersonMeResponse[]>(endpoints.GET_VIRTUAL_MONEY);
