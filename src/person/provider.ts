@@ -1,4 +1,4 @@
-import { getMe, getOneBy, getPosition, list } from './actions';
+import { getMe, getOneBy, getPosition, list, getFavoriteOrganization } from './actions';
 
 class PersonProvider {
 
@@ -27,6 +27,16 @@ class PersonProvider {
 
   public position(position: { [key: string]: any }) {
     return getPosition(position);
+  }
+
+  public favoriteOrganization(
+    id: string,
+    page = 1,
+    itemsPerPage = 10,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    filters: { [key: string]: any },
+  )  {
+    return getFavoriteOrganization(id, page, itemsPerPage, filters)
   }
 }
 

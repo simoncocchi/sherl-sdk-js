@@ -1,4 +1,5 @@
-import { IPersonMeResponse, ILocation} from '../types';
+import { IPersonMeResponse, ILocation } from '../types';
+import { IOrganizationResponse } from '../../organization/types';
 import { endpoints } from './endpoints';
 import { Fetcher } from '../../common/api';
 import { errorFactory } from '../errors';
@@ -14,28 +15,25 @@ class PersonApi {
    * @static
    * @memberof PersonApi
    */
-  public static getMe = () =>
-    fetcher.get<IPersonMeResponse>(endpoints.GET_ME);
-  
+  public static getMe = () => fetcher.get<IPersonMeResponse>(endpoints.GET_ME);
 
   public static getOneBy = (id: string) =>
-  fetcher.get<IPersonMeResponse>(
-    StringUtils.bindContext(endpoints.GET_ONE_BY_USERID, { id }),
-  );
+    fetcher.get<IPersonMeResponse>(
+      StringUtils.bindContext(endpoints.GET_ONE_BY_USERID, { id }),
+    );
 
-    /**
+  /**
    * Get Position with longitude and latitude
    *
    * @static
    * @memberof PersonApi
    */
   public static getPosition = (position: { [key: string]: any }) =>
-    fetcher.get<Pagination<ILocation[]>>(
-      endpoints.GET_POSITION,
-      { ...position },
-    );
+    fetcher.get<Pagination<ILocation[]>>(endpoints.GET_POSITION, {
+      ...position,
+    });
 
-    /**
+  /**
    * Get list of person.
    *
    * @static
@@ -52,11 +50,27 @@ class PersonApi {
       ...filters,
     });
 
-    public static getConfigs = () =>
+  public static getConfigs = () =>
     fetcher.get<IPersonMeResponse[]>(endpoints.GET_CONFIG);
 
-    public static getVirtualMoney = () =>
+  public static getVirtualMoney = () =>
     fetcher.get<IPersonMeResponse[]>(endpoints.GET_VIRTUAL_MONEY);
+
+  public static getFavoriteOrganization = (
+    id: string,
+    page = 1,
+    itemsPerPage = 10,
+    filters: { [key: string]: any },
+  ) =>
+    fetcher.get<Pagination<IOrganizationResponse[]>>(
+      StringUtils.bindContext(endpoints.GET_FAVORITE_ORGANIZATION, { id }),
+      (endpoints.GET_FAVORITE_ORGANIZATION,
+      {
+        page,
+        itemsPerPage,
+        ...filters,
+      }),
+    );
 }
 
 export { PersonApi };
