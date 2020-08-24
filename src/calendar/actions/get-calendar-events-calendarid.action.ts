@@ -1,10 +1,10 @@
 import { Pagination } from '../../common/api';
-import { ICalendarEventResponse  } from '../types'
+import { ICalendarEventResponse } from '../types';
 import { CalendarApi } from '../api/client';
 import { errorFactory, CalendarErr } from '../errors';
 
 export const getCalendarEventsCalendarId = async (
-    calendarId: string,
+  calendarId: string,
   page = 1,
   itemsPerPage = 10,
   filters: { [key: string]: any },
