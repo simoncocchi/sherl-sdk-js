@@ -8,7 +8,25 @@ title: Product
 To retrieve product list.
 
 ```ts
-const products = await sherl.product().list(1, 10);
+const products = await sherl.product().list(1, 10 {
+  uri: "your string",
+  slug: "your string",
+  parentUri: "your string",
+  organizationUri: "your string",
+  organizationSlug: "your string",
+  id: "your string",
+  name: "your string",
+  categoryUri: "your string",
+  categoryUris: "your string",
+  consumerId: "your string",
+  q: "your string",
+  isEnable: "your_boolean",
+  type: "your string",
+  metadatas: "your string",
+  restrictions: "your string",
+  noBind: "your_boolean",
+  sort: "your string",
+});
 ```
 
 Return object
@@ -47,7 +65,7 @@ Return object
 To retrieve one product by id.
 
 ```ts
-const product = await sherl.product().one(productId);
+const product = await sherl.product().one("productId");
 ```
 
 Return object
