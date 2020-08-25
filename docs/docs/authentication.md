@@ -41,7 +41,9 @@ Return object
 }
 ```
 
-## Googel auth
+## Google auth
+
+Authentication - Google - Open HTML form for login.
 
 ```ts
 const google = await sherl.auth().google();
@@ -51,6 +53,88 @@ Return object
 
 ```ts
 {
-  access_token: string;
+  
+}
+```
+
+## Google auth callback
+
+Authentication with facebook account - Callback.
+
+```ts
+const googlecallback = await sherl.auth().googleCallback();
+```
+
+Return object 
+
+```ts
+{
+    id: string;
+  displayName: string;
+  name: {
+    familyName: string;
+    givenName: string;
+  };
+  emails: [
+    {
+      value: string;
+      verified: true;
+    },
+  ];
+  photos: [
+    {
+      value: string;
+    },
+  ];
+  locale: string;
+}
+```
+
+## Facebook auth
+
+Authentication - Facebook - Open HTML form for login.
+
+```ts
+const facebook = await sherl.auth().facebook();
+```
+
+Return object 
+
+```ts
+{
+  
+}
+```
+
+## Facebook auth callback
+
+Authentication with facebook account - Callback.
+
+```ts
+const facebookcallback = await sherl.auth().facebookCallback();
+```
+
+Return object 
+
+```ts
+{
+    id: string;
+  displayName: string;
+  name: {
+    familyName: string;
+    givenName: string;
+  };
+  emails: [
+    {
+      value: string;
+      verified: true;
+    },
+  ];
+  photos: [
+    {
+      value: string;
+    },
+  ];
+  locale: string;
 }
 ```
