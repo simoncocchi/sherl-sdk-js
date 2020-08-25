@@ -40,3 +40,17 @@ Return object
   access_token: string;
 }
 ```
+
+## Googel auth
+
+```ts
+const google = await sherl.auth().google();
+```
+
+Return object 
+
+```ts
+{
+  access_token: string;
+}
+```

@@ -1,5 +1,5 @@
 import { Fetcher } from '../../common/api';
-import { ApiLoginResponse } from '../types';
+import { IApiLoginResponse, IAuthCallbackResponse } from '../types';
 import { endpoints } from './endpoints';
 import { AuthErr, errorFactory } from '../errors';
 import { StringUtils } from '../../common/utils/string';
@@ -12,7 +12,7 @@ class AuthApi {
     password: string,
   ) =>
     fetcher
-      .post<ApiLoginResponse>(endpoints.LOGIN_WITH_CREDENTIALS, {
+      .post<IApiLoginResponse>(endpoints.LOGIN_WITH_CREDENTIALS, {
         username,
         password,
       })
@@ -21,11 +21,21 @@ class AuthApi {
       });
 
   public static getImpersonate = (id: string) =>
-    fetcher.get<ApiLoginResponse>(
+    fetcher.get<IApiLoginResponse>(
       StringUtils.bindContext(endpoints.GET_IMPERSONATE, { id }),
     );
 
   public static getLogout = () => endpoints.GET_LOGOUT;
+
+  public static getGoogle = () => fetcher.get(endpoints.GET_GOOGLE); // pas d'interface ????
+
+  public static getFacebook = () => fetcher.get(endpoints.GET_FACEBOOK); // pas d'interface ????
+
+  public static getGoogleCallback = () =>
+    fetcher.get<IAuthCallbackResponse>(endpoints.GET_GOOGLE_CALLBACK);
+
+  public static getFacebookCallback = () =>
+    fetcher.get<IAuthCallbackResponse>(endpoints.GET_FACEBOOK_CALLBACK);
 }
 
 export { AuthApi };

@@ -3,6 +3,10 @@ import {
   signInWithEmailAndPassword,
   getLogout,
   getImpersonate,
+  getFacebook,
+  getFacebookCallback,
+  getGoogle,
+  getGoogleCallback,
 } from './actions';
 
 class AuthProvider {
@@ -28,6 +32,22 @@ class AuthProvider {
 
   public logout() {
     return getLogout();
+  }
+
+  public google() {
+    return getGoogle();
+  }
+
+  public googleCallback() {
+    return getGoogleCallback();
+  }
+
+  public facebook() {
+    return getFacebook();
+  }
+
+  public facebookCallback() {
+    return getFacebookCallback();
   }
 }
 
