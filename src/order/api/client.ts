@@ -36,7 +36,7 @@ class OrderApi {
       StringUtils.bindContext(endpoints.GET_ORDER, { id }),
     );
 
- /**
+  /**
    * Get organization order.
    *
    * @static
@@ -45,6 +45,28 @@ class OrderApi {
   public static getOrganizationOrders = (id: string) =>
     fetcher.get<IOrderResponse[]>(
       StringUtils.bindContext(endpoints.GET_ORDER, { id }),
+    );
+
+  /**
+   * Get automation primary
+   *
+   * @static
+   * @memberof OrderApi
+   */
+  public static getAutomationPrimary = (id: string) =>
+    fetcher.get<IOrderResponse>( /// Je ne sais pas s'il y a une interface ????????
+      StringUtils.bindContext(endpoints.GET_ORDER_AUTOMATION_PRIMARY, { id }),
+    );
+
+  /**
+   * Get automation secondary
+   *
+   * @static
+   * @memberof OrderApi
+   */
+  public static getAutomationSecondary = (id: string) =>
+    fetcher.get<IOrderResponse>( /// Je ne sais pas s'il y a une interface ????????
+      StringUtils.bindContext(endpoints.GET_ORDER_AUTOMATION_SECONDARY, { id }),
     );
 }
 

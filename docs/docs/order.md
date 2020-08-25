@@ -99,3 +99,93 @@ Return object
     updatedAt: Date;
 }
 ```
+
+## Get automation primary
+
+```ts
+const order = await sherl.order().automationPrimary('id');
+```
+
+Return object
+
+```ts
+{
+    id: string;
+    uri: string;
+    consumerId: string;
+    organization: IOrganizationResponse;
+    customer: IPersonMeResponse;
+    orderNumber: number;
+    orderNumberOfDay: number;
+    orderStatus: OrderStatusEnum;
+    type: ShopProductTypeEnum;
+    meansOfPayment: ShopMeansOfPaymentEnum;
+    payments: IPayment[];
+    acceptedOffer: IOffer[];
+    price: number;
+    priceTaxIncluded: number;
+    priceAdvancePayment: number;
+    priceCommission: number;
+    priceTaxIncludedWithCommission: number;
+    priceToPay: number;
+    numberOfCredit: number;
+    billingAddress: IAddress;
+    orderedItems: IOrderItem[];
+    orderStatusHistory: IOrderStatusHistory[];
+    commission: IOrderCommission;
+    refunds: IShopOrderRefund[];
+    metadatas: any;
+    sponsorshipCode: string;
+    discountCode: string;
+    discountToUsefull: IDiscount[];
+    subscriptionBeginDate: Date;
+    isFreeTrial: boolean;
+    createdAt: Date;
+    updatedAt: Date;
+}
+```
+
+## Get automation secondary
+
+```ts
+const order = await sherl.order().automationSecondary('id');
+```
+
+Return object
+
+```ts
+{
+    id: string;
+    uri: string;
+    consumerId: string;
+    organization: IOrganizationResponse;
+    customer: IPersonMeResponse;
+    orderNumber: number;
+    orderNumberOfDay: number;
+    orderStatus: OrderStatusEnum;
+    type: ShopProductTypeEnum;
+    meansOfPayment: ShopMeansOfPaymentEnum;
+    payments: IPayment[];
+    acceptedOffer: IOffer[];
+    price: number;
+    priceTaxIncluded: number;
+    priceAdvancePayment: number;
+    priceCommission: number;
+    priceTaxIncludedWithCommission: number;
+    priceToPay: number;
+    numberOfCredit: number;
+    billingAddress: IAddress;
+    orderedItems: IOrderItem[];
+    orderStatusHistory: IOrderStatusHistory[];
+    commission: IOrderCommission;
+    refunds: IShopOrderRefund[];
+    metadatas: any;
+    sponsorshipCode: string;
+    discountCode: string;
+    discountToUsefull: IDiscount[];
+    subscriptionBeginDate: Date;
+    isFreeTrial: boolean;
+    createdAt: Date;
+    updatedAt: Date;
+}
+```

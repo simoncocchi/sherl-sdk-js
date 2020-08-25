@@ -1,4 +1,10 @@
-import { getOrder, getOrders, getOrganizationOrders } from './actions';
+import {
+  getOrder,
+  getOrders,
+  getOrganizationOrders,
+  getAutomationPrimary,
+  getAutomationSecondary,
+} from './actions';
 
 class OrderProvider {
   public list(
@@ -23,6 +29,27 @@ class OrderProvider {
    */
   public organizationOrders(organizationId: string) {
     return getOrganizationOrders(organizationId);
+  }
+
+  /**
+   * Get automation.
+   *
+   * @param {string} id
+   * @returns
+   * @memberof ProductProvider
+   */
+  public automationPrimary(id: string) {
+    return getAutomationPrimary(id);
+  }
+  /**
+   * Get automation.
+   *
+   * @param {string} id
+   * @returns
+   * @memberof ProductProvider
+   */
+  public automationSecondary(id: string) {
+    return getAutomationSecondary(id);
   }
 }
 
