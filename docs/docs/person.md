@@ -68,7 +68,7 @@ Return object
 To retrieve user informations with is id
 
 ```ts
-const me = await sherl.person().findOne('ID');
+const oneById = await sherl.person().findOne('ID');
 ```
 
 Return object
@@ -128,7 +128,7 @@ Return object
 To retrieve users informations
 
 ```ts
-const me = await sherl.person().list(1, 10);
+const persons = await sherl.person().list(1, 10);
 ```
 
 Return object
@@ -194,7 +194,7 @@ Return object
 To retrieve user position
 
 ```ts
-const me = await sherl
+const currentAddress = await sherl
   .person()
   .position({ longitude: 'your_longitude', latitude: 'your_latitude' });
 ```
@@ -219,7 +219,7 @@ Return object
 To retrieve pro user config
 
 ```ts
-const me = await sherl.person().config();
+const config = await sherl.person().config();
 ```
 
 Return object

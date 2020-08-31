@@ -1,7 +1,12 @@
-import { getMe, getOneBy, getPosition, list, getConfigs } from './actions';
+import {
+  getMe,
+  getPersonById,
+  getCurrentAddress,
+  getPersons,
+  getConfigs,
+} from './actions';
 
 class PersonProvider {
-
   /**
    * Get Me.
    *
@@ -13,20 +18,20 @@ class PersonProvider {
   }
 
   public findOne(id: string) {
-    return getOneBy(id);
+    return getPersonById(id);
   }
 
   public list(
     page = 1,
     itemsPerPage = 10,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    filters: { [key: string]: any },
-  )  {
-    return list(page, itemsPerPage, filters)
+    filters: { [key: string]: string },
+  ) {
+    return getPersons(page, itemsPerPage, filters);
   }
 
-  public position(position: { [key: string]: any }) {
-    return getPosition(position);
+  public position(position: { [key: string]: string }) {
+    return getCurrentAddress(position);
   }
 
   public config() {
