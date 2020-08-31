@@ -4,4 +4,15 @@ export * from './get-position.action';
 export * from './get-persons.actions';
 export * from './get-config.action';
 export * from './post-address.action';
-export * from './post-favorite-organization.action'
+export * from './post-favorite-organization.action';
+export * from './post-picture.action';
+export * from './post-add-black-list.action';
+export * from './post-address.action';
+export * from './post-create-admin.action';
+export * from './post-create-person.action';
+export * from './post-disabled.action';
+export * from './post-enable.action';
+export * from './post-favorite-organization.action';
+export * from './post-legal-notice.action';
+export * from './post-privacy-policy.action';
+export * from './post-refrech-iam-one.action';

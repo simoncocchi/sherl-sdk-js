@@ -2,10 +2,12 @@ import { PersonApi } from '../api/client';
 import { PersonErr, errorFactory } from '../errors';
 
 export const postFavoriteOrganization = async (
-    idOrganization: string
-): Promise<Object> => {
+  idPerson: string,
+  idOrganization: string,
+): Promise<Object> => { // reponse
   const response = await PersonApi.postFavoriteOrganization(
-    idOrganization
+    idPerson,
+    idOrganization,
   );
 
   if (!response.data) {

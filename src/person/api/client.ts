@@ -47,15 +47,224 @@ class PersonApi {
         throw errorFactory.create(PersonErr.POST_ADDRESS_FAILED);
       });
 
-  public static postFavoriteOrganization = (idOrganization: string) =>
+  public static postCreatePerson = (
+    id: string,
+    firstName: string,
+    lastName: string,
+    address: {
+      id: string;
+      country: string;
+      locality: string;
+      region: string;
+      postalCode: string;
+      streetAddress: string;
+      uri: string;
+      createdAt: Date;
+      department: string;
+      complementaryStreetAddress: string;
+      name: string;
+      originId: string;
+      latitude: 0;
+      longitude: 0;
+    },
+    phoneNumber: string,
+    mobilePhoneNumber: string,
+    faxNumber: string,
+    nationality: string,
+    affiliation: {
+      id: string;
+      uri: string;
+      legalName: string;
+      location: {
+        id: string;
+        country: string;
+        locality: string;
+        region: string;
+        postalCode: string;
+        streetAddress: string;
+        uri: string;
+        createdAt: Date;
+        department: string;
+        complementaryStreetAddress: string;
+        name: string;
+        originId: string;
+        latitude: number;
+        longitude: number;
+      };
+      subOrganizations: [string];
+    },
+    birthDate: Date,
+    email: string,
+    gender: string,
+    jobTitle: string,
+  ) =>
+    fetcher // Reponse ???
+      .post<IPersonMeResponse>(endpoints.POST_CREATE_PERSON, {
+        id,
+        firstName,
+        lastName,
+        address,
+        phoneNumber,
+        mobilePhoneNumber,
+        faxNumber,
+        nationality,
+        affiliation,
+        birthDate,
+        email,
+        gender,
+        jobTitle,
+      })
+      .catch(_err => {
+        throw errorFactory.create(PersonErr.POST_CREATE_PERSON_FAILED);
+      });
+
+  public static postCreateAdmin = (
+    id: string,
+    firstName: string,
+    lastName: string,
+    email: string,
+  ) =>
+    fetcher // Reponse ???
+      .post<IPersonMeResponse>(endpoints.POST_CREATE_ADMIN, {
+        id,
+        firstName,
+        lastName,
+        email,
+      })
+      .catch(_err => {
+        throw errorFactory.create(PersonErr.POST_CREATE_ADMIN_FAILED);
+      });
+
+  public static postRegisterEmailPassword = (
+    id: string,
+    firstName: string,
+    lastName: string,
+    address: {
+      id: string;
+      country: string;
+      locality: string;
+      region: string;
+      postalCode: string;
+      streetAddress: string;
+      uri: string;
+      createdAt: Date;
+      department: string;
+      complementaryStreetAddress: string;
+      name: string;
+      originId: string;
+      latitude: number;
+      longitude: number;
+    },
+    phoneNumber: string,
+    birthDate: Date,
+    email: string,
+    password: string,
+    confirmPassword: string,
+  ) =>
+    fetcher // Reponse ???
+      .post<IPersonMeResponse>(endpoints.POST_REGISTER_EMAIL_PASSWORD, {
+        id,
+        firstName,
+        lastName,
+        address,
+        phoneNumber,
+        birthDate,
+        email,
+        password,
+        confirmPassword,
+      })
+      .catch(_err => {
+        throw errorFactory.create(
+          PersonErr.POST_REGISTER_EMAIL_PASSWORD_FAILED,
+        );
+      });
+
+  public static postRefreshIam = () =>
+    fetcher
+      .post<IPersonMeResponse>(endpoints.POST_REFRESH_IAM, {})
+      .catch(_err => {
+        throw errorFactory.create(PersonErr.POST_REFRESH_IAM_FAILED);
+      });
+
+  public static postPicture = (idPerson: string, idMedia: string) =>
+    fetcher
+      .post<IPersonMeResponse>(
+        StringUtils.bindContext(endpoints.POST_PICTURE, {
+          idPerson,
+          idMedia,
+        }),
+      )
+      .catch(_err => {
+        throw errorFactory.create(PersonErr.POST_PICTURE_FAILED);
+      });
+
+  public static postFavoriteOrganization = (
+    idPerson: string,
+    idOrganization: string,
+  ) =>
     fetcher
       .post<IPersonMeResponse>(
         StringUtils.bindContext(endpoints.POST_FAVORITE_ORG, {
+          idPerson,
           idOrganization,
         }),
       )
       .catch(_err => {
         throw errorFactory.create(PersonErr.POST_FAVORITE_FAILED);
+      });
+
+  public static postRefreshIamOne = (id: string) =>
+    fetcher // reponse ???
+      .post<IPersonMeResponse>(
+        StringUtils.bindContext(endpoints.POST_REFRESH_IAM_TO_ONE, { id }),
+      )
+      .catch(_err => {
+        throw errorFactory.create(PersonErr.POST_REFRESH_IAM_FAILED);
+      });
+
+  public static postEnable = (id: string) =>
+    fetcher // reponse ???
+      .post<IPersonMeResponse>(
+        StringUtils.bindContext(endpoints.POST_ENABLE, { id }),
+      )
+      .catch(_err => {
+        throw errorFactory.create(PersonErr.POST_ENABLE_FAILED);
+      });
+
+  public static postDisabled = (id: string) =>
+    fetcher // reponse ???
+      .post<IPersonMeResponse>(
+        StringUtils.bindContext(endpoints.POST_DISABLED, { id }),
+      )
+      .catch(_err => {
+        throw errorFactory.create(PersonErr.POST_ENABLE_FAILED);
+      });
+
+  public static postLegalNotice = (id: string, version: string) =>
+    fetcher // reponse ???
+      .post<IPersonMeResponse>(
+        StringUtils.bindContext(endpoints.POST_LEGAL_NOTICE, { id }),(endpoints.POST_LEGAL_NOTICE, { version })
+      )
+      .catch(_err => {
+        throw errorFactory.create(PersonErr.POST_ENABLE_FAILED);
+      });
+
+  public static postPrivacyPolice = (id: string, version: string) =>
+    fetcher // reponse ???
+      .post<IPersonMeResponse>(
+        StringUtils.bindContext(endpoints.POST_PRIVACY_POLICY, { id }), (endpoints.POST_LEGAL_NOTICE, { version })
+      )
+      .catch(_err => {
+        throw errorFactory.create(PersonErr.POST_ENABLE_FAILED);
+      });
+
+  public static postAddBlackList = (id: string) =>
+    fetcher // reponse ???
+      .post<IPersonMeResponse>(
+        StringUtils.bindContext(endpoints.POST_ADD_BLACK_LIST, { id }),
+      )
+      .catch(_err => {
+        throw errorFactory.create(PersonErr.POST_ENABLE_FAILED);
       });
 
   /**

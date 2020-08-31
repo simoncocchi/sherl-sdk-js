@@ -17,7 +17,7 @@ export const postRequestPersonAddress = async (
   streetAddress: string,
   type: string,
   uri: string,
-): Promise<Object> => {
+): Promise<Object> => { // reponse
   const response = await PersonApi.postRequestPersonAddress(
     complementaryStreetAddress,
     country,
