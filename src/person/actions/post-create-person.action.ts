@@ -1,5 +1,4 @@
 import { PersonApi } from '../api/client';
-import { PersonErr, errorFactory } from '../errors';
 
 export const postCreatePerson = async (
   id: string,
@@ -51,7 +50,8 @@ export const postCreatePerson = async (
   email: string,
   gender: string,
   jobTitle: string,
-): Promise<Object> => { // reponse
+) => {
+  // reponse ??
   const response = await PersonApi.postCreatePerson(
     id,
     firstName,
@@ -67,10 +67,4 @@ export const postCreatePerson = async (
     gender,
     jobTitle,
   );
-
-  if (!response.data) {
-    throw errorFactory.create(PersonErr.POST_CREATE_PERSON_FAILED);
-  }
-
-  return response.data;
 };

@@ -16,3 +16,5 @@ export * from './post-favorite-organization.action';
 export * from './post-legal-notice.action';
 export * from './post-privacy-policy.action';
 export * from './post-refrech-iam-one.action';
+export * from './post-register-mail-paswword.action';
+export * from './post-refrech-iam.action';

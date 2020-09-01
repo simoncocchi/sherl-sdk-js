@@ -99,7 +99,7 @@ class PersonApi {
     jobTitle: string,
   ) =>
     fetcher // Reponse ???
-      .post<IPersonMeResponse>(endpoints.POST_CREATE_PERSON, {
+      .post(endpoints.POST_CREATE_PERSON, {
         id,
         firstName,
         lastName,
@@ -224,26 +224,23 @@ class PersonApi {
 
   public static postEnable = (id: string) =>
     fetcher // reponse ???
-      .post<IPersonMeResponse>(
-        StringUtils.bindContext(endpoints.POST_ENABLE, { id }),
-      )
+      .post(StringUtils.bindContext(endpoints.POST_ENABLE, { id }))
       .catch(_err => {
         throw errorFactory.create(PersonErr.POST_ENABLE_FAILED);
       });
 
   public static postDisabled = (id: string) =>
     fetcher // reponse ???
-      .post<IPersonMeResponse>(
-        StringUtils.bindContext(endpoints.POST_DISABLED, { id }),
-      )
+      .post(StringUtils.bindContext(endpoints.POST_DISABLED, { id }))
       .catch(_err => {
         throw errorFactory.create(PersonErr.POST_ENABLE_FAILED);
       });
 
   public static postLegalNotice = (id: string, version: string) =>
     fetcher // reponse ???
-      .post<IPersonMeResponse>(
-        StringUtils.bindContext(endpoints.POST_LEGAL_NOTICE, { id }),(endpoints.POST_LEGAL_NOTICE, { version })
+      .post(
+        StringUtils.bindContext(endpoints.POST_LEGAL_NOTICE, { id }),
+        (endpoints.POST_LEGAL_NOTICE, { version }),
       )
       .catch(_err => {
         throw errorFactory.create(PersonErr.POST_ENABLE_FAILED);
@@ -251,8 +248,9 @@ class PersonApi {
 
   public static postPrivacyPolice = (id: string, version: string) =>
     fetcher // reponse ???
-      .post<IPersonMeResponse>(
-        StringUtils.bindContext(endpoints.POST_PRIVACY_POLICY, { id }), (endpoints.POST_LEGAL_NOTICE, { version })
+      .post(
+        StringUtils.bindContext(endpoints.POST_PRIVACY_POLICY, { id }),
+        (endpoints.POST_LEGAL_NOTICE, { version }),
       )
       .catch(_err => {
         throw errorFactory.create(PersonErr.POST_ENABLE_FAILED);

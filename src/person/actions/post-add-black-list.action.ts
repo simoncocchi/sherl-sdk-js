@@ -1,9 +1,10 @@
 import { PersonApi } from '../api/client';
 import { PersonErr, errorFactory } from '../errors';
+import { IPersonMeResponse } from '../types';
 
 export const postAddBlackList = async (
   id: string,
-): Promise<Object> => { // reponse
+): Promise<IPersonMeResponse> => { // reponse ??
   const response = await PersonApi.postAddBlackList(
     id
   );

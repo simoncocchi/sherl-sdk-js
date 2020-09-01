@@ -4,6 +4,7 @@ import {
   getPosition,
   list,
   getConfigs,
+  postRegisterEmailPassword,
   postRequestPersonAddress,
   postFavoriteOrganization,
   postPicture,
@@ -15,11 +16,55 @@ import {
   postLegalNotice,
   postPrivacyPolice,
   postRefreshIamOne,
+  postRefreshIam
 } from './actions';
 
 class PersonProvider {
+  public postRegisterEmailPassword = async (
+    id: string,
+    firstName: string,
+    lastName: string,
+    address: {
+      id: string;
+      country: string;
+      locality: string;
+      region: string;
+      postalCode: string;
+      streetAddress: string;
+      uri: string;
+      createdAt: Date;
+      department: string;
+      complementaryStreetAddress: string;
+      name: string;
+      originId: string;
+      latitude: number;
+      longitude: number;
+    },
+    phoneNumber: string,
+    birthDate: Date,
+    email: string,
+    password: string,
+    confirmPassword: string,
+  ) => {
+    return postRegisterEmailPassword(
+      id,
+      firstName,
+      lastName,
+      address,
+      phoneNumber,
+      birthDate,
+      email,
+      password,
+      confirmPassword,
+    );
+  };
+
   public postRefreshIamOne = async (id: string) => {
     return postRefreshIamOne(id);
+  };
+
+  public postRefreshIam = async () => {
+    return postRefreshIam();
   };
 
   public postPrivacyPolice = async (id: string, version: string) => {
