@@ -1,4 +1,13 @@
-import { IPersonMeResponse, ILocation, IConfigResponse } from '../types';
+import {
+  IPersonMeResponse,
+  ILocation,
+  IConfigResponse,
+  IAdminParameter,
+  IPersonParameter,
+  IAddressParameter,
+  IVersionParameter,
+  IRegisterEmailPasswordParameter,
+} from '../types';
 import { endpoints } from './endpoints';
 import { Fetcher } from '../../common/api';
 import { errorFactory, PersonErr } from '../errors';
@@ -8,170 +17,39 @@ import { Pagination } from '../../common/api';
 const fetcher = new Fetcher(errorFactory);
 
 class PersonApi {
-  public static postRequestPersonAddress = (
-    complementaryStreetAddress: string,
-    country: string,
-    createdAt: string,
-    department: string,
-    id: string,
-    latitude: number,
-    locality: string,
-    longitude: number,
-    name: string,
-    originId: string,
-    postalCode: string,
-    region: string,
-    streetAddress: string,
-    type: string,
-    uri: string,
-  ) =>
+  public static postRequestPersonAddress = (parameter: IAddressParameter) =>
     fetcher
       .post<IPersonMeResponse>(endpoints.POST_ADDRESS, {
-        complementaryStreetAddress,
-        country,
-        createdAt,
-        department,
-        id,
-        latitude,
-        locality,
-        longitude,
-        name,
-        originId,
-        postalCode,
-        region,
-        streetAddress,
-        type,
-        uri,
+        ...parameter,
       })
       .catch(_err => {
         throw errorFactory.create(PersonErr.POST_ADDRESS_FAILED);
       });
 
-  public static postCreatePerson = (
-    id: string,
-    firstName: string,
-    lastName: string,
-    address: {
-      id: string;
-      country: string;
-      locality: string;
-      region: string;
-      postalCode: string;
-      streetAddress: string;
-      uri: string;
-      createdAt: Date;
-      department: string;
-      complementaryStreetAddress: string;
-      name: string;
-      originId: string;
-      latitude: 0;
-      longitude: 0;
-    },
-    phoneNumber: string,
-    mobilePhoneNumber: string,
-    faxNumber: string,
-    nationality: string,
-    affiliation: {
-      id: string;
-      uri: string;
-      legalName: string;
-      location: {
-        id: string;
-        country: string;
-        locality: string;
-        region: string;
-        postalCode: string;
-        streetAddress: string;
-        uri: string;
-        createdAt: Date;
-        department: string;
-        complementaryStreetAddress: string;
-        name: string;
-        originId: string;
-        latitude: number;
-        longitude: number;
-      };
-      subOrganizations: [string];
-    },
-    birthDate: Date,
-    email: string,
-    gender: string,
-    jobTitle: string,
-  ) =>
+  public static postCreatePerson = (parameter: IPersonParameter) =>
     fetcher // Reponse ???
       .post(endpoints.POST_CREATE_PERSON, {
-        id,
-        firstName,
-        lastName,
-        address,
-        phoneNumber,
-        mobilePhoneNumber,
-        faxNumber,
-        nationality,
-        affiliation,
-        birthDate,
-        email,
-        gender,
-        jobTitle,
+        ...parameter,
       })
       .catch(_err => {
         throw errorFactory.create(PersonErr.POST_CREATE_PERSON_FAILED);
       });
 
-  public static postCreateAdmin = (
-    id: string,
-    firstName: string,
-    lastName: string,
-    email: string,
-  ) =>
+  public static postCreateAdmin = (parameter: IAdminParameter) =>
     fetcher // Reponse ???
       .post<IPersonMeResponse>(endpoints.POST_CREATE_ADMIN, {
-        id,
-        firstName,
-        lastName,
-        email,
+        ...parameter,
       })
       .catch(_err => {
         throw errorFactory.create(PersonErr.POST_CREATE_ADMIN_FAILED);
       });
 
   public static postRegisterEmailPassword = (
-    id: string,
-    firstName: string,
-    lastName: string,
-    address: {
-      id: string;
-      country: string;
-      locality: string;
-      region: string;
-      postalCode: string;
-      streetAddress: string;
-      uri: string;
-      createdAt: Date;
-      department: string;
-      complementaryStreetAddress: string;
-      name: string;
-      originId: string;
-      latitude: number;
-      longitude: number;
-    },
-    phoneNumber: string,
-    birthDate: Date,
-    email: string,
-    password: string,
-    confirmPassword: string,
+    parameter: IRegisterEmailPasswordParameter,
   ) =>
     fetcher // Reponse ???
       .post<IPersonMeResponse>(endpoints.POST_REGISTER_EMAIL_PASSWORD, {
-        id,
-        firstName,
-        lastName,
-        address,
-        phoneNumber,
-        birthDate,
-        email,
-        password,
-        confirmPassword,
+        ...parameter,
       })
       .catch(_err => {
         throw errorFactory.create(
@@ -236,21 +114,24 @@ class PersonApi {
         throw errorFactory.create(PersonErr.POST_ENABLE_FAILED);
       });
 
-  public static postLegalNotice = (id: string, version: string) =>
+  public static postLegalNotice = (id: string, parameter: IVersionParameter) =>
     fetcher // reponse ???
       .post(
         StringUtils.bindContext(endpoints.POST_LEGAL_NOTICE, { id }),
-        (endpoints.POST_LEGAL_NOTICE, { version }),
+        (endpoints.POST_LEGAL_NOTICE, { ...parameter }),
       )
       .catch(_err => {
         throw errorFactory.create(PersonErr.POST_ENABLE_FAILED);
       });
 
-  public static postPrivacyPolice = (id: string, version: string) =>
+  public static postPrivacyPolice = (
+    id: string,
+    parameter: IVersionParameter,
+  ) =>
     fetcher // reponse ???
       .post(
         StringUtils.bindContext(endpoints.POST_PRIVACY_POLICY, { id }),
-        (endpoints.POST_LEGAL_NOTICE, { version }),
+        (endpoints.POST_LEGAL_NOTICE, { ...parameter }),
       )
       .catch(_err => {
         throw errorFactory.create(PersonErr.POST_ENABLE_FAILED);

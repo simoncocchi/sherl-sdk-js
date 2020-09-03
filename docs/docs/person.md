@@ -301,75 +301,17 @@ Return object
 
 ## Create a new super administrator.
 
-Create a super admin with id, name, first name and mail
+Create a super admin with id, name, first name and mail in object
 
 ```ts
 const postCreateAdmin = await sherl
   .person()
-  .postCreateAdmin('id', 'Firstname', 'name', 'email');
-console.log('postCreateAdmin', postCreateAdmin);
-```
-
-Return object
-
-```ts
-{
-  id: string;
-  uri: string;
-  consumerId: string;
-  userId: string;
-  firstName: string;
-  lastName: string;
-  address: IPlace;
-  myAddresses: IPlace[];
-  subscriptionLocation: IGeoCoordinates;
-  phoneNumber: string;
-  mobilePhoneNumber: string;
-  faxNumber: string;
-  nationality: string;
-  affiliation: IOrganization;
-  birthDate: Date;
-  email: string;
-  gender: string;
-  latitude: number;
-  longitude: number;
-  jobTitle: string;
-  enabled: boolean;
-  legalNotice: ILegalNotice;
-  privacyPolicy: IPrivacyPolicy;
-  createdAt: Date;
-  updatedAt: Date;
-  picture: IImageObject;
-  settings: ISettings;
-  organizationFavorites: string[];
-  mangopayUserId: string;
-  mangopayWalletId: string;
-  mangopayCards: IMangopayCard[];
-  stripe: IStripe;
-  lemonway: ILemonway;
-  type: IPersonTypeEnum;
-  frequentedEstablishments: IFrequentedEstablishments[];
-  metadatas: { [key: string]: any };
-  statistics: {
-    lastVisit: Date;
-    firstVisit: Date;
-    totalVisit: number;
-    amountLastOrder: number;
-    amountTotalOrder: number;
-    frequentedEstablishments: IFrequentedEstablishments[];
-    loyalCustomer: boolean;
-  };
-}
-```
-
-## Create a new super administrator.
-
-Create a super admin with id, name, first name and mail
-
-```ts
-const postCreateAdmin = await sherl
-  .person()
-  .postCreateAdmin('id', 'Firstname', 'name', 'email');
+  .postCreateAdmin({
+  id: 'string';
+  firstName: 'string';
+  lastName: 'string';
+  email: 'string';
+});
 console.log('postCreateAdmin', postCreateAdmin);
 ```
 
@@ -427,28 +369,33 @@ Return object
 
 ## Create a new address to current Person.
 
-Add a new adress to person complementaryStreetAddress, country, createdAt, department, id, latitude, locality, longitude, name, originId, postalCode, region, streetAddress, type, and uri
+Add a new adress to person with adress object
 
 ```ts
 const postAddress = await sherl
   .person()
-  .postAddress(
-    'complementaryStreetAddress',
-    'country',
-    'createdAt',
-    'department',
-    'id',
-    latitude,
-    'locality',
-    longitude,
-    'name',
-    'originId',
-    'postalCode',
-    'region',
-    'streetAddress',
-    'type',
-    'uri',
-  );
+  .postAddress({
+  id: 'string';
+  uri: 'string';
+  country: 'string';
+  locality: 'string';
+  region: 'string';
+  department: 'string';
+  types: ['string'];
+  postalCode: 'string';
+  streetAddress: 'string';
+  complementaryStreetAddress: 'string';
+  name: 'string';
+  originId: 'string';
+  latitude: number;
+  longitude: number;
+  consumerId: 'string';
+  createdAt: 'Date';
+  updatedAt: 'Date';
+  type: 'string';
+  isDefault: boolean;
+  googleToken: 'string';
+});
 console.log('postAddress', postAddress);
 ```
 
@@ -506,66 +453,95 @@ Return object
 
 ## Create a new Person.
 
-Create a new Person with id, firstName, lastName, address, phoneNumber, mobilePhoneNumber, faxNumber, nationality, affiliation, birthDate, email, gender and jobTitle
+Create a new Person with person object
 
 ```ts
-const postCreatePerson = await sherl.person().postCreatePerson(
-  'id',
-  'firstName',
-  'lastName',
-  {
-    id: 'adress-id',
-    country: 'address-contry',
-    locality: 'address-locality',
-    region: 'address-region',
-    postalCode: 'address-postalCode',
-    streetAddress: 'address-streetAddress',
-  },
-  'phoneNumber',
-  'mobilePhoneNumber',
-  'faxNumber',
-  'nationality',
-  'affiliation',
-  'birthDate',
-  'email',
-  'gender',
-  'jobTitle',
-);
+const postCreatePerson = await sherl.person().postCreatePerson({
+  id: 'string';
+  firstName: 'string';
+  lastName: 'string';
+  address: {
+    id: 'string';
+    country: 'string';
+    locality: 'string';
+    region: 'string';
+    postalCode: 'string';
+    streetAddress: 'string';
+    uri: 'string';
+    createdAt: 'Date';
+    department: 'string';
+    complementaryStreetAddress: 'string';
+    name: 'string';
+    originId: 'string';
+    latitude: number;
+    longitude: number;
+  };
+  phoneNumber: 'string';
+  mobilePhoneNumber: 'string';
+  faxNumber: 'string';
+  nationality: 'string';
+  affiliation: {
+    id: 'string';
+    uri: 'string';
+    legalName: 'string';
+    location: {
+      id: 'string';
+      country: 'string';
+      locality: 'string';
+      region: 'string';
+      postalCode: 'string';
+      streetAddress: 'string';
+      uri: 'string';
+      createdAt: 'Date';
+      department: 'string';
+      complementaryStreetAddress: 'string';
+      name: 'string';
+      originId: 'string';
+      latitude: number;
+      longitude: number;
+    };
+    subOrganizations: ['string'];
+  };
+  birthDate: 'Date';
+  email: 'string';
+  gender: 'string';
+  jobTitle: 'string';
+};
 ```
 
 No response from this post request
 
 ## Create a new person with email and password
 
-Create a new person with id, firstName, lastName, address, phoneNumber, birthDate, email, password and confirmPassword
+Create a new person with person object
 
 ```ts
-const registerEmailPassword = await sherl.person().postRegisterEmailPassword(
-  'id',
-  'firstName',
-  'lastName',
-  {
-    id: 'address-id',
-    uri: 'address-uri',
-    createdAt: 'address-createdAt',
-    country: 'address-country',
-    locality: 'address-locality',
-    region: 'address-region',
-    department: 'address-department',
-    postalCode: 'address-postalCode',
-    streetAddress: 'address-streetAddress',
-    complementaryStreetAddress: 'address-complementaryStreetAddress',
-    name: 'address-name',
-    originId: 'address-originId',
-    latitude: address - latitude,
-    longitude: address - longitude,
-  },
-  'phoneNumber',
-  'birthDate',
-  'email',
-  'password',
-  'confirmPassword',
-);
+const registerEmailPassword = await sherl.person().postRegisterEmailPassword({
+  id: 'string';
+  firstName: 'string';
+  lastName: 'string';
+  address: {
+    id: 'string';
+    country: 'string';
+    locality: 'string';
+    region: 'string';
+    postalCode: 'string';
+    streetAddress: 'string';
+    uri: 'string';
+    createdAt: 'Date';
+    department: 'string';
+    complementaryStreetAddress: 'string';
+    name: 'string';
+    originId: 'string';
+    latitude: number;
+    longitude: number;
+  };
+  phoneNumber: 'string';
+  birthDate: 'Date';
+  email: 'string';
+  password: 'string';
+  confirmPassword: 'string';
+});
 console.log('registerEmailPassword', registerEmailPassword);
 ```
 
@@ -643,22 +619,22 @@ No response from this post request
 
 ## Accept legal notice for one Person.
 
-Accept legal notice for one Person with id and version
+Accept legal notice for one Person with id and version object
 
 ```ts
-const postLegalNotice = await sherl.person().postLegalNotice('id', 'version');
+const postLegalNotice = await sherl.person().postLegalNotice('id', { version: 'string'; });
 ```
 
 No response from this post request
 
 ## Accept Privacy Policy for one Person. // dont work and not found in connectilib
 
-Accept Privacy Policy for one Person with id and version
+Accept Privacy Policy for one Person with id and version object
 
 ```ts
 const postPrivacyPolice = await sherl
   .person()
-  .postPrivacyPolice('id', 'version');
+  .postPrivacyPolice('id', { version: 'string'; });
 ```
 
 No response from this post request

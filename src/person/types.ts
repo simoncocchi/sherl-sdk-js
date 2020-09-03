@@ -1,5 +1,118 @@
 import { IGeoCoordinates, IPlace } from '../common/types';
 
+export interface IAdminParameter {
+  id: 'string';
+  firstName: 'string';
+  lastName: 'string';
+  email: 'string';
+}
+
+export interface IAddressParameter {
+  id: 'string';
+  uri: 'string';
+  country: 'string';
+  locality: 'string';
+  region: 'string';
+  department: 'string';
+  types: ['string'];
+  postalCode: 'string';
+  streetAddress: 'string';
+  complementaryStreetAddress: 'string';
+  name: 'string';
+  originId: 'string';
+  latitude: number;
+  longitude: number;
+  consumerId: 'string';
+  createdAt: 'Date';
+  updatedAt: 'Date';
+  type: 'string';
+  isDefault: boolean;
+  googleToken: 'string';
+}
+
+export interface IRegisterEmailPasswordParameter {
+  id: 'string';
+  firstName: 'string';
+  lastName: 'string';
+  address: {
+    id: 'string';
+    country: 'string';
+    locality: 'string';
+    region: 'string';
+    postalCode: 'string';
+    streetAddress: 'string';
+    uri: 'string';
+    createdAt: 'Date';
+    department: 'string';
+    complementaryStreetAddress: 'string';
+    name: 'string';
+    originId: 'string';
+    latitude: number;
+    longitude: number;
+  };
+  phoneNumber: 'string';
+  birthDate: 'Date';
+  email: 'string';
+  password: 'string';
+  confirmPassword: 'string';
+}
+
+export interface IPersonParameter {
+  id: 'string';
+  firstName: 'string';
+  lastName: 'string';
+  address: {
+    id: 'string';
+    country: 'string';
+    locality: 'string';
+    region: 'string';
+    postalCode: 'string';
+    streetAddress: 'string';
+    uri: 'string';
+    createdAt: 'Date';
+    department: 'string';
+    complementaryStreetAddress: 'string';
+    name: 'string';
+    originId: 'string';
+    latitude: number;
+    longitude: number;
+  };
+  phoneNumber: 'string';
+  mobilePhoneNumber: 'string';
+  faxNumber: 'string';
+  nationality: 'string';
+  affiliation: {
+    id: 'string';
+    uri: 'string';
+    legalName: 'string';
+    location: {
+      id: 'string';
+      country: 'string';
+      locality: 'string';
+      region: 'string';
+      postalCode: 'string';
+      streetAddress: 'string';
+      uri: 'string';
+      createdAt: 'Date';
+      department: 'string';
+      complementaryStreetAddress: 'string';
+      name: 'string';
+      originId: 'string';
+      latitude: number;
+      longitude: number;
+    };
+    subOrganizations: ['string'];
+  };
+  birthDate: 'Date';
+  email: 'string';
+  gender: 'string';
+  jobTitle: 'string';
+}
+
+export interface IVersionParameter {
+  version: 'string';
+}
+
 export interface IPersonMeResponse {
   id: string;
   uri: string;
