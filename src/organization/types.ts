@@ -6,6 +6,208 @@ import {
 } from '../person/types';
 import { ICategoryResponse, IProductResponse } from '../product/types';
 
+export interface IOrganizationParams {
+  id: 'string';
+  legalName: 'string';
+  siret: 'string';
+  location: {
+    id: 'string';
+    country: 'string';
+    locality: 'string';
+    region: 'string';
+    postalCode: 'string';
+    streetAddress: 'string';
+    uri: 'string';
+    createdAt: 'Date';
+    department: 'string';
+    complementaryStreetAddress: 'string';
+    name: 'string';
+    originId: 'string';
+    latitude: number;
+    longitude: number;
+  };
+}
+
+export interface IOrganizationRegisterParams {
+  sponsoredByCode: 'string';
+  organization: {
+    id: 'string';
+    legalName: 'string';
+    siret: 'string';
+    location: {
+      id: 'string';
+      country: 'string';
+      locality: 'string';
+      region: 'string';
+      postalCode: 'string';
+      streetAddress: 'string';
+      uri: 'string';
+      createdAt: 'Date';
+      department: 'string';
+      complementaryStreetAddress: 'string';
+      name: 'string';
+      originId: 'string';
+      latitude: number;
+      longitude: number;
+    };
+  };
+  person: {
+    id: 'string';
+    firstName: 'string';
+    lastName: 'string';
+    address: {
+      id: 'string';
+      country: 'string';
+      locality: 'string';
+      region: 'string';
+      postalCode: 'string';
+      streetAddress: 'string';
+      uri: 'string';
+      createdAt: 'Date';
+      department: 'string';
+      complementaryStreetAddress: 'string';
+      name: 'string';
+      originId: 'string';
+      latitude: number;
+      longitude: number;
+    };
+    mobilePhoneNumber: 'string';
+    nationality: 'string';
+    latitude: number;
+    longitude: number;
+    birthDate: 'Date';
+    email: 'string';
+    gender: 'string';
+    jobTitle: 'string';
+  };
+}
+
+export interface IKycParams {
+  id: 'string';
+  type: {};
+  media: {};
+}
+
+export interface IRibParams {
+  iban: 'string';
+  bic: 'string';
+}
+
+export interface IEmployeeParams {
+  id: 'string';
+  firstName: 'string';
+  lastName: 'string';
+  email: 'string';
+}
+
+export interface IFounderParams {
+  id: 'string';
+  firstName: 'string';
+  lastName: 'string';
+  birthDate: '2018-11-21T06:20:32.232Z';
+  email: 'string';
+}
+
+export interface IPictureParams {
+  id: 'string';
+  uri: 'string';
+  width: 0;
+  height: 0;
+  caption: {
+    contentUrl: 'string';
+    description: 'string';
+    duration: 'string';
+    encodingFormat: 'string';
+    size: 0;
+    name: 'string';
+    id: 'string';
+  };
+  thumbnail: {
+    id: 'string';
+    uri: 'string';
+    width: 0;
+    height: 0;
+    caption: {
+      contentUrl: 'string';
+      description: 'string';
+      duration: 'string';
+      encodingFormat: 'string';
+      size: 0;
+      name: 'string';
+      id: 'string';
+    };
+  };
+}
+
+export interface IOpeningHoursParams {
+  id: 'string';
+  dayOfWeek: 'string';
+  closes: '2020-09-02T11:34:28.196Z';
+  opens: '2020-09-02T11:34:28.196Z';
+  validFrom: '2020-09-02T11:34:28.196Z';
+  validThrough: '2020-09-02T11:34:28.196Z';
+}
+
+export interface ICommunicationParams {
+  title: 'string';
+  message: 'string';
+  icon: 'string';
+}
+
+export interface IBackgroundParams {
+  id: 'string';
+  uri: 'string';
+  width: 0;
+  height: 0;
+  caption: {
+    contentUrl: 'string';
+    description: 'string';
+    duration: 'string';
+    encodingFormat: 'string';
+    size: 0;
+    name: 'string';
+    id: 'string';
+  };
+  thumbnail: {
+    id: 'string';
+    uri: 'string';
+    width: 0;
+    height: 0;
+    caption: {
+      contentUrl: 'string';
+      description: 'string';
+      duration: 'string';
+      encodingFormat: 'string';
+      size: 0;
+      name: 'string';
+      id: 'string';
+    };
+  };
+}
+
+export interface IAddressParams {
+  id: 'string';
+  uri: 'string';
+  country: 'string';
+  locality: 'string';
+  region: 'string';
+  department: 'string';
+  types: ['string'];
+  postalCode: 'string';
+  streetAddress: 'string';
+  complementaryStreetAddress: 'string';
+  name: 'string';
+  originId: 'string';
+  latitude: 0;
+  longitude: 0;
+  consumerId: 'string';
+  createdAt: '2020-09-02T11:56:02.956Z';
+  updatedAt: '2020-09-02T11:56:02.956Z';
+  type: 'string';
+  isDefault: true;
+  googleToken: 'string';
+}
+
 export interface IOrganizationResponse extends IModel {
   id: string;
   uri: string;
