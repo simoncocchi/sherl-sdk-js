@@ -17,3 +17,27 @@ Return object
 {
 }
 ```
+
+## Post configs
+
+Set a config value
+
+```ts
+const postConfigs = await sherl.config().postConfigs({
+  isPublic: true;
+  code: 'string';
+  value: {};
+});
+console.log('postConfigs', postConfigs);
+```
+
+Return object
+
+```ts
+{
+  isPublic: true;
+  code: 'string';
+  value: {
+  }
+}
+```
