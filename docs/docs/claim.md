@@ -8,10 +8,12 @@ title: Claim
 To retrieve claim list.
 
 ```ts
-const me = await sherl.claim().list();
+const getClaims = await sherl.claim().getClaims();
 ```
 
 Return object
+
+<!-- ???? -->
 
 ```ts
 {
@@ -20,54 +22,18 @@ Return object
     "page": 1,
     "total": 0
   },
-  "results": 
+  "results":
   [
     {
-    id: string;
-    uri: string;
-    consumerId: string;
-    userId: string;
-    firstName: string;
-    lastName: string;
-    address: IPlace;
-    myAddresses: IPlace[];
-    subscriptionLocation: IGeoCoordinates;
-    phoneNumber: string;
-    mobilePhoneNumber: string;
-    faxNumber: string;
-    nationality: string;
-    affiliation: IOrganization;
-    birthDate: Date;
-    email: string;
-    gender: string;
-    latitude: number;
-    longitude: number;
-    jobTitle: string;
-    enabled: boolean;
-    legalNotice: ILegalNotice;
-    privacyPolicy: IPrivacyPolicy;
-    createdAt: Date;
-    updatedAt: Date;
-    picture: IImageObject;
-    settings: ISettings;
-    organizationFavorites: string[];
-    mangopayUserId: string;
-    mangopayWalletId: string;
-    mangopayCards: IMangopayCard[];
-    stripe: IStripe;
-    lemonway: ILemonway;
-    type: IPersonTypeEnum;
-    frequentedEstablishments: IFrequentedEstablishments[];
-    metadatas: { [key: string]: any };
-    statistics: {
-        lastVisit: Date;
-        firstVisit: Date;
-        totalVisit: number;
-        amountLastOrder: number;
-        amountTotalOrder: number;
-        frequentedEstablishments: IFrequentedEstablishments[];
-        loyalCustomer: boolean;
-    };
+      id: 'string';
+      personId: 'string';
+      orderId: 'string';
+      issueTitle: 'string';
+      issueMessage: 'string';
+      schedules: {
+        allowedFromDate: 'Date';
+        allowedUntilDate: 'Date';
+      };
     }
   ]
 }
@@ -78,59 +44,112 @@ Return object
 To retrieve claim by id.
 
 ```ts
-const me = await sherl.claim().one("your_id");
+const getClaim = await sherl.claim().getClaim('your_id');
 ```
 
 Return object
 
+<!-- ???? -->
+
 ```ts
+{
+  id: 'string';
+  personId: 'string';
+  orderId: 'string';
+  issueTitle: 'string';
+  issueMessage: 'string';
+  schedules: {
+    allowedFromDate: 'Date';
+    allowedUntilDate: 'Date';
+  }
+}
+```
 
-    {
-    id: string;
-    uri: string;
-    consumerId: string;
-    userId: string;
-    firstName: string;
-    lastName: string;
-    address: IPlace;
-    myAddresses: IPlace[];
-    subscriptionLocation: IGeoCoordinates;
-    phoneNumber: string;
-    mobilePhoneNumber: string;
-    faxNumber: string;
-    nationality: string;
-    affiliation: IOrganization;
-    birthDate: Date;
-    email: string;
-    gender: string;
-    latitude: number;
-    longitude: number;
-    jobTitle: string;
-    enabled: boolean;
-    legalNotice: ILegalNotice;
-    privacyPolicy: IPrivacyPolicy;
-    createdAt: Date;
-    updatedAt: Date;
-    picture: IImageObject;
-    settings: ISettings;
-    organizationFavorites: string[];
-    mangopayUserId: string;
-    mangopayWalletId: string;
-    mangopayCards: IMangopayCard[];
-    stripe: IStripe;
-    lemonway: ILemonway;
-    type: IPersonTypeEnum;
-    frequentedEstablishments: IFrequentedEstablishments[];
-    metadatas: { [key: string]: any };
-    statistics: {
-        lastVisit: Date;
-        firstVisit: Date;
-        totalVisit: number;
-        amountLastOrder: number;
-        amountTotalOrder: number;
-        frequentedEstablishments: IFrequentedEstablishments[];
-        loyalCustomer: boolean;
-    };
-    }
+## Post reply refund
 
+Reply to claim to refund with id
+
+```ts
+const postClaimRefund = await sherl.claim().postClaimRefund('id');
+```
+
+Return object
+
+<!-- ???? -->
+
+```ts
+{
+  id: 'string';
+  personId: 'string';
+  orderId: 'string';
+  issueTitle: 'string';
+  issueMessage: 'string';
+  schedules: {
+    allowedFromDate: 'Date';
+    allowedUntilDate: 'Date';
+  }
+}
+```
+
+## Post claims
+
+Create claim with id and claim object
+
+```ts
+const postClaim = await sherl.claim().postClaim('id', {
+  id: 'string';
+  personId: 'string';
+  orderId: 'string';
+  issueTitle: 'string';
+  issueMessage: 'string';
+  schedules: {
+    allowedFromDate: 'Date';
+    allowedUntilDate: 'Date';
+  }});
+```
+
+Return object
+
+<!-- ???? -->
+
+```ts
+{
+  id: 'string';
+  personId: 'string';
+  orderId: 'string';
+  issueTitle: 'string';
+  issueMessage: 'string';
+  schedules: {
+    allowedFromDate: 'Date';
+    allowedUntilDate: 'Date';
+  }
+}
+```
+
+## Post reply claim
+
+Reply to claim with id and replu claim object
+
+```ts
+const postClaimReply = await sherl.claim().postClaimReply('id', {
+  content: 'string',
+});
+```
+
+Return object
+
+<!-- ???? -->
+
+```ts
+{
+  id: 'string';
+  personId: 'string';
+  orderId: 'string';
+  issueTitle: 'string';
+  issueMessage: 'string';
+  schedules: {
+    allowedFromDate: 'Date';
+    allowedUntilDate: 'Date';
+  }
+}
 ```
