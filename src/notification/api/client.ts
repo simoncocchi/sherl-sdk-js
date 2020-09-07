@@ -9,7 +9,6 @@ import { Pagination } from '../../common/api';
 import { endpoints } from './endpoints';
 import { Fetcher } from '../../common/api';
 import { errorFactory, NotificationErr } from '../errors';
-import { stringify } from 'querystring';
 import { StringUtils } from '../../common/utils/string';
 
 const fetcher = new Fetcher(errorFactory);
