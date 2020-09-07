@@ -1,58 +1,42 @@
 export interface INotificationResponse {
-  
-}
-
-//old
-export interface ICategoryResponse {
-  id: string;
-  uri: string;
-  taxeValue: number;
-  consumerId: string;
-  parentUri: string;
-  name: string;
-  organizationUri: string;
-  createdAt: string;
-  updatedAt: string;
-  subCategories?: ICategoryResponse[];
-}
-
-export interface IProductResponse {
-  isEnable: boolean;
   id: string;
   uri: string;
   consumerId: string;
   name: string;
-  slogan: string;
-  description: string;
-  categoryUri: string;
-  offers: IOfferResponse[];
-  metadatas: IMetadatasResponse;
-  options: IOptionResponse[];
-  organizationUri: string;
-  createdAt: string;
-  updatedAt: string;
-  category: null;
+  code: string;
+  email: ILanguage;
+  sms: ILanguage;
+  push: ILanguage;
+  enabled: boolean;
 }
 
-export interface IMetadatasResponse {
-  degreeOfAlcohol: string;
+export interface ILanguage {
+  fr: IMessage;
+  en: IMessage;
 }
 
-export interface IOfferResponse {
-  price: number;
-  taxRate: number;
-  priceTaxIncluded: number;
+export interface IMessage {
+  subject: string;
+  text: string;
+  html: string;
 }
 
-export interface IOptionResponse {
-  id: string;
-  items: IItemResponse[];
-  name: string;
-  required: boolean;
-  rangeMin: number;
+export interface IDisabledEnabledNotificationParameter {
+  organizationUri: 'string';
 }
 
-export interface IItemResponse {
-  name: string;
-  priceTaxIncluded: number;
+export interface IRegistrationParameter {
+  token: 'string';
+}
+
+export interface INotificationParameter {
+  html: 'string';
+  subject: 'string';
+  text: 'string';
+}
+
+export interface IRegistrationResponse {
+  personId: 'string';
+  registrationToken: 'string';
+  createdAt: 'Date';
 }

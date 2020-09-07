@@ -28,7 +28,7 @@ class Fetcher {
   public async post<T>(
     url: string,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    data: { [key: string]: any },
+    data?: { [key: string]: any },
   ): Promise<ApiResponse<T>> {
     return axios.post<T>(url, data).catch((err: AxiosError) => {
       if (err.response && err.response.status) {

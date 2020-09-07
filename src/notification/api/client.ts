@@ -1,8 +1,14 @@
-import { INotificationResponse } from '../types';
+import {
+  INotificationResponse,
+  IDisabledEnabledNotificationParameter,
+  IRegistrationParameter,
+  IRegistrationResponse,
+  INotificationParameter,
+} from '../types';
 import { Pagination } from '../../common/api';
 import { endpoints } from './endpoints';
 import { Fetcher } from '../../common/api';
-import { errorFactory } from '../errors';
+import { errorFactory, NotificationErr } from '../errors';
 
 const fetcher = new Fetcher(errorFactory);
 
@@ -11,7 +17,7 @@ class NotificationApi {
    * Get list of notification.
    *
    * @static
-   * @memberof ProductApi
+   * @memberof NotificationApi
    */
   public static getNotifications = (
     page = 1,
@@ -26,6 +32,69 @@ class NotificationApi {
         ...filters,
       },
     );
+
+  public static postDisableNotification = (
+    id: string,
+    parameter: IDisabledEnabledNotificationParameter,
+  ) =>
+    fetcher
+      .post<INotificationResponse>(endpoints.POST_DISABLE_NOTIFICATION, {
+        // reponse ???
+        id,
+        ...parameter,
+      })
+      .catch(_err => {
+        throw errorFactory.create(
+          NotificationErr.POST_DISABLE_NOTIFICATION_FAILED,
+        );
+      });
+
+  public static postEnableNotification = (
+    id: string,
+    parameter: IDisabledEnabledNotificationParameter,
+  ) =>
+    fetcher
+      .post<INotificationResponse>(endpoints.POST_ENABLE_NOTIFICATION, {
+        // reponse ???
+        id,
+        ...parameter,
+      })
+      .catch(_err => {
+        throw errorFactory.create(
+          NotificationErr.POST_ENABLE_NOTIFICATION_FAILED,
+        );
+      });
+
+  public static postTestNotification = () =>
+    fetcher.post(endpoints.POST_TEST_NOTIFICATION, {}).catch(_err => {
+      throw errorFactory.create(NotificationErr.POST_TEST_NOTIFICATION_FAILED);
+    });
+
+  public static postRegistrationNotification = (
+    parameter: IRegistrationParameter,
+  ) =>
+    fetcher
+      .post<IRegistrationResponse>(endpoints.POST_REGISTRATION_NOTIFICATION, {
+        ...parameter,
+      })
+      .catch(_err => {
+        throw errorFactory.create(
+          NotificationErr.POST_REGISTRATION_NOTIFICATION_FAILED,
+        );
+      });
+
+  public static postNotification = (
+    type: string,
+    parameter: INotificationParameter,
+  ) =>
+    fetcher
+      .post(endpoints.POST_NOTIFICATION, {
+        type,
+        ...parameter,
+      })
+      .catch(_err => {
+        throw errorFactory.create(NotificationErr.POST_NOTIFICATION_FAILED);
+      });
 }
 
 export { NotificationApi };
