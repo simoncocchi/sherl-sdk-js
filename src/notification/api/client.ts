@@ -9,6 +9,8 @@ import { Pagination } from '../../common/api';
 import { endpoints } from './endpoints';
 import { Fetcher } from '../../common/api';
 import { errorFactory, NotificationErr } from '../errors';
+import { stringify } from 'querystring';
+import { StringUtils } from '../../common/utils/string';
 
 const fetcher = new Fetcher(errorFactory);
 
@@ -38,11 +40,13 @@ class NotificationApi {
     parameter: IDisabledEnabledNotificationParameter,
   ) =>
     fetcher
-      .post<INotificationResponse>(endpoints.POST_DISABLE_NOTIFICATION, {
-        // reponse ???
-        id,
-        ...parameter,
-      })
+      .post<INotificationResponse>( // reponse ???
+        StringUtils.bindContext(endpoints.POST_DISABLE_NOTIFICATION, { id }),
+        (endpoints.POST_DISABLE_NOTIFICATION,
+        {
+          ...parameter,
+        }),
+      )
       .catch(_err => {
         throw errorFactory.create(
           NotificationErr.POST_DISABLE_NOTIFICATION_FAILED,
@@ -54,11 +58,13 @@ class NotificationApi {
     parameter: IDisabledEnabledNotificationParameter,
   ) =>
     fetcher
-      .post<INotificationResponse>(endpoints.POST_ENABLE_NOTIFICATION, {
-        // reponse ???
-        id,
-        ...parameter,
-      })
+      .post<INotificationResponse>( // reponse ???
+        StringUtils.bindContext(endpoints.POST_DISABLE_NOTIFICATION, { id }),
+        (endpoints.POST_ENABLE_NOTIFICATION,
+        {
+          ...parameter,
+        }),
+      )
       .catch(_err => {
         throw errorFactory.create(
           NotificationErr.POST_ENABLE_NOTIFICATION_FAILED,
@@ -88,10 +94,13 @@ class NotificationApi {
     parameter: INotificationParameter,
   ) =>
     fetcher
-      .post(endpoints.POST_NOTIFICATION, {
-        type,
-        ...parameter,
-      })
+      .post(
+        StringUtils.bindContext(endpoints.POST_DISABLE_NOTIFICATION, { type }),
+        (endpoints.POST_NOTIFICATION,
+        {
+          ...parameter,
+        }),
+      )
       .catch(_err => {
         throw errorFactory.create(NotificationErr.POST_NOTIFICATION_FAILED);
       });
