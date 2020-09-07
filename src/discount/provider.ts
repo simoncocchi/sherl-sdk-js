@@ -1,4 +1,11 @@
-import { getDiscount, getDiscountParams, ListDiscount, ListPublicDiscount } from './actions';
+import {
+  getDiscount,
+  getDiscountParams,
+  ListDiscount,
+  ListPublicDiscount,
+  postDiscount,
+} from './actions';
+import { IDiscountParameter } from './types';
 
 class DiscountProvider {
   public list(
@@ -25,6 +32,10 @@ class DiscountProvider {
     filters: { [key: string]: any },
   ) {
     return ListPublicDiscount(page, itemsPerPage, filters);
+  }
+
+  public postDiscount(parameter: IDiscountParameter) {
+    return postDiscount(parameter);
   }
 }
 

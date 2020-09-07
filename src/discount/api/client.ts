@@ -1,15 +1,13 @@
-import { IDiscountResponse } from '../types';
+import { IDiscountResponse, IDiscountParameter } from '../types';
 import { Pagination } from '../../common/api';
 import { StringUtils } from '../../common/utils/string';
 import { endpoints } from './endpoints';
 import { Fetcher } from '../../common/api';
-import { errorFactory } from '../errors';
+import { errorFactory, DiscountErr } from '../errors';
 
 const fetcher = new Fetcher(errorFactory);
 
 class DiscountApi {
-  
-
   /**
    * Get one discount by id.
    *
@@ -21,17 +19,16 @@ class DiscountApi {
       StringUtils.bindContext(endpoints.GET_DISCOUNT_ID, { id }),
     );
 
-      /**
+  /**
    * Get one discount by params.
    *
    * @static
    * @memberof DiscountApi
    */
   public static getDiscountParams = (params: { [key: string]: any }) =>
-  fetcher.get<Pagination<IDiscountResponse>>(
-    endpoints.GET_DISCOUNT_BY,
-    { params },
-  );
+    fetcher.get<Pagination<IDiscountResponse>>(endpoints.GET_DISCOUNT_BY, {
+      params,
+    });
 
   /**
    * Get list of Discounts.
@@ -61,11 +58,23 @@ class DiscountApi {
     itemsPerPage = 10,
     filters: { [key: string]: any },
   ) =>
-    fetcher.get<Pagination<IDiscountResponse[]>>(endpoints.GET_PUBLIC_DISCOUNTS, {
-      page,
-      itemsPerPage,
-      ...filters,
-    });
+    fetcher.get<Pagination<IDiscountResponse[]>>(
+      endpoints.GET_PUBLIC_DISCOUNTS,
+      {
+        page,
+        itemsPerPage,
+        ...filters,
+      },
+    );
+
+  public static postDiscount = (parameter: IDiscountParameter) =>
+    fetcher
+      .post<IDiscountResponse>(endpoints.POST_DISCOUNT, {
+        ...parameter,
+      })
+      .catch(_err => {
+        throw errorFactory.create(DiscountErr.POST_FAILED);
+      });
 }
 
 export { DiscountApi };
