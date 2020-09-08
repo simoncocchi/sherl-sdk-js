@@ -1,14 +1,17 @@
 export interface ICommentResponse {
-
+  id: string;
+  uri: string;
+  createAt: string;
+  productId: string;
+  personId: string;
+  personName: string;
+  organizationUri: string;
+  content: string;
 }
 
-export interface ILikeResponse {
-  
-}
+export interface ILikeResponse {}
 
-export interface IViewResponse {
-  
-}
+export interface IViewResponse {}
 
 export interface ICategoryResponse {
   id: string;
@@ -155,7 +158,7 @@ export interface IPublicCategoryResponse {
   updatedAt: Date;
   aggCategory: string;
   is: false;
-  // seo: SEO; Besoin de SEO ? Je ne l'ai pas dans mes interfaces 
+  // seo: SEO; Besoin de SEO ? Je ne l'ai pas dans mes interfaces
 }
 
 export enum ShopProductTypeEnum {
@@ -167,4 +170,76 @@ export enum ShopProductTypeEnum {
   PLAN = 'PLAN',
   QUOTA = 'QUOTA',
   REFUND = 'REFUND', // Un avoir
+}
+
+export interface ICalculatePriceParameter {
+  price: number;
+  planUri: 'string';
+}
+
+export interface ICreateProductParameter {
+  id: 'string';
+  parentUri: 'string';
+  organizationUri: 'string';
+  globalUri: 'string';
+  categoryUri: 'string';
+  categoryUris: ['string'];
+  name: 'string';
+  slogan: 'string';
+  description: 'string';
+  degreeOfAlcohol: 'string';
+  priceTaxIncluded: number;
+  metadatas: {};
+  type: {};
+}
+
+export interface ICreateCategoriesParameter {
+  id: 'string';
+  globalUri: 'string';
+  name: 'string';
+  color: 'string';
+  taxeValue: number;
+  seo: {
+    title: 'string';
+    description: 'string';
+    keywords: 'string';
+    others: {};
+  };
+}
+
+export interface ICreateSubCategoriesParameter {
+  id: 'string';
+  globalUri: 'string';
+  color: 'string';
+  name: 'string';
+  seo: {
+    title: 'string';
+    description: 'string';
+    keywords: 'string';
+    others: {};
+  };
+}
+
+export interface IAddOptionParameter {
+  id: 'string';
+  name: 'string';
+  items: [
+    {
+      name: 'string';
+      priceTaxIncluded: number;
+    },
+  ];
+  required: {};
+  rangeMin: number;
+  enabled: boolean;
+}
+
+export interface ICommentProductParameter {
+  id: 'string';
+  productId: 'string';
+  content: 'string';
+}
+
+export interface ICalculatePriceResponse {
+  amount: number;
 }

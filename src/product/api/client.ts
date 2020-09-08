@@ -6,16 +6,137 @@ import {
   ICommentResponse,
   ILikeResponse,
   IViewResponse,
+  IAddOptionParameter,
+  ICalculatePriceParameter,
+  ICommentProductParameter,
+  ICreateCategoriesParameter,
+  ICreateProductParameter,
+  ICreateSubCategoriesParameter,
+  ICalculatePriceResponse,
 } from '../types';
 import { Pagination } from '../../common/api';
 import { StringUtils } from '../../common/utils/string';
 import { endpoints } from './endpoints';
 import { Fetcher } from '../../common/api';
-import { errorFactory } from '../errors';
+import { errorFactory, ProductErr } from '../errors';
 
 const fetcher = new Fetcher(errorFactory);
 
 class ProductApi {
+  public static postProductCalculatePrice = (
+    parameter: ICalculatePriceParameter,
+  ) =>
+    fetcher
+      .post<ICalculatePriceResponse>(endpoints.POST_PRODUCT_CALCULATE_PRICE, {
+        ...parameter,
+      })
+      .catch(_err => {
+        throw errorFactory.create(ProductErr.POST_FAILED);
+      });
+
+  public static postCreateProduct = (parameter: ICreateProductParameter) =>
+    fetcher
+      .post<IPublicProductResponse>(endpoints.POST_PRODUCT_CREATE, {
+        ...parameter,
+      })
+      .catch(_err => {
+        throw errorFactory.create(ProductErr.POST_FAILED);
+      });
+
+  public static postProductEnable = (id: string) =>
+    fetcher
+      .post<IPublicProductResponse>(
+        StringUtils.bindContext(endpoints.POST_PRODUCT_ENABLE, {
+          id,
+        }),
+      )
+      .catch(_err => {
+        throw errorFactory.create(ProductErr.POST_FAILED);
+      });
+
+  public static postProductDisable = (id: string) =>
+    fetcher
+      .post<IPublicProductResponse>(
+        StringUtils.bindContext(endpoints.POST_PRODUCT_DISABLE, {
+          id,
+        }),
+      )
+      .catch(_err => {
+        throw errorFactory.create(ProductErr.POST_FAILED);
+      });
+
+  public static postProductIndex = () =>
+    fetcher.post(endpoints.POST_PRODUCT_INDEX, {}).catch(_err => {
+      throw errorFactory.create(ProductErr.POST_FAILED);
+    });
+
+  public static postProductView = (id: string) =>
+    fetcher
+      .post<IPublicProductResponse>( // reponse inconue
+        StringUtils.bindContext(endpoints.POST_PRODUCT_VIEW, {
+          id,
+        }),
+      )
+      .catch(_err => {
+        throw errorFactory.create(ProductErr.POST_FAILED);
+      });
+
+  public static postProductLike = (id: string) =>
+    fetcher
+      .post<IPublicProductResponse>( // reponse inconue
+        StringUtils.bindContext(endpoints.POST_PRODUCT_LIKE, {
+          id,
+        }),
+      )
+      .catch(_err => {
+        throw errorFactory.create(ProductErr.POST_FAILED);
+      });
+
+  public static postCreateCategory = (parameter: ICreateCategoriesParameter) =>
+    fetcher
+      .post<IPublicCategoryResponse>(endpoints.POST_PRODUCT_CREATE_CATEGORY, {
+        ...parameter,
+      })
+      .catch(_err => {
+        throw errorFactory.create(ProductErr.POST_FAILED);
+      });
+
+  public static postCreateSubCategory = (
+    id: string,
+    parameter: ICreateSubCategoriesParameter,
+  ) =>
+    fetcher
+      .post<IPublicCategoryResponse>(
+        StringUtils.bindContext(endpoints.POST_PRODUCT_LIKE, {
+          id,
+        }),
+        (endpoints.POST_PRODUCT_CREATE_SUBCATEGORY,
+        {
+          ...parameter,
+        }),
+      )
+      .catch(_err => {
+        throw errorFactory.create(ProductErr.POST_FAILED);
+      });
+
+  public static postAddProductOption = (
+    id: string,
+    parameter: ICreateSubCategoriesParameter,
+  ) =>
+    fetcher
+      .post<IPublicCategoryResponse>(
+        StringUtils.bindContext(endpoints.POST_PRODUCT_LIKE, {
+          id,
+        }),
+        (endpoints.POST_PRODUCT_CREATE_SUBCATEGORY,
+        {
+          ...parameter,
+        }),
+      )
+      .catch(_err => {
+        throw errorFactory.create(ProductErr.POST_FAILED);
+      });
+
   /**
    * Get list of products.
    *
@@ -84,7 +205,7 @@ class ProductApi {
     itemsPerPage = 10,
     filters: { [key: string]: any },
   ) =>
-    fetcher.get<Pagination<ICommentResponse[]>>(
+    fetcher.get<Pagination<ILikeResponse[]>>(
       StringUtils.bindContext(endpoints.GET_LIKE_PRODUCT, { id }),
       (endpoints.GET_LIKE_PRODUCT,
       {

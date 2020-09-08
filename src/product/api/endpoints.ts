@@ -7,9 +7,23 @@ export const endpoints = {
   GET_PUBLIC_PRODUCT: '/api/public/shop/products/:id',
   GET_PUBLIC_PRODUCT_SLUG: '/api/public/shop/products/find-one-by-slug/:slug',
   GET_PUBLIC_CATEGORIES: '/api/public/shop/products/categories',
-  GET_PUBLIC_CATEGORIES_SLUG: '/api/public/shop/products/categories/find-one-by-slug',
-  GET_PUBLIC_CATEGORIES_AND_SUB: '/api/public/shop/products/categories-and-subcategories',
+  GET_PUBLIC_CATEGORIES_SLUG:
+    '/api/public/shop/products/categories/find-one-by-slug',
+  GET_PUBLIC_CATEGORIES_AND_SUB:
+    '/api/public/shop/products/categories-and-subcategories',
   GET_COMMENT_PRODUCT: '/api/shop/products/:id/comments',
   GET_LIKE_PRODUCT: '/api/shop/products/:id/like',
-  GET_VIEW_PRODUCT: '/api/shop/products/:id/views'
+  GET_VIEW_PRODUCT: '/api/shop/products/:id/views',
+  POST_PRODUCT_CALCULATE_PRICE: '/api/shop/products/calculate-price',
+  POST_PRODUCT_CREATE: '/api/shop/products',
+  POST_PRODUCT_ENABLE: '/api/shop/products/:id/enable',
+  POST_PRODUCT_DISABLE: '/api/shop/products/:id/disable',
+  POST_PRODUCT_INDEX: '/api/shop/products/index',
+  POST_PRODUCT_VIEW: '/api/shop/products/{id}/views',
+  POST_PRODUCT_LIKE: '/api/shop/products/{id}/like',
+  POST_PRODUCT_CREATE_CATEGORY: '/api/shop/products/categories',
+  POST_PRODUCT_CREATE_SUBCATEGORY: '/api/shop/products/categories/{id}',
+  POST_PRODUCT_ADD_OPTION: '/api/shop/products/{productId}/options',
+  POST_PRODUCT_ADD_PICTURE: '/api/shop/products/{productId}/pictures/{idMedia}',
+  POST_PRODUCT_ADD_COMMENT: '/api/shop/products/comments',
 };
