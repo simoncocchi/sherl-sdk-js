@@ -1,4 +1,4 @@
-import { IProductResponse, ICategoryResponse } from '../types';
+import { IProductResponse, ICategoryResponse, IPublicProductResponse, IPublicCategoryResponse} from '../types';
 import { Pagination } from '../../common/api';
 import { StringUtils } from '../../common/utils/string';
 import { endpoints } from './endpoints';
@@ -70,9 +70,68 @@ class ProductApi {
    * @static
    * @memberof ProductApi
    */
-  public static getCategoriesById = (categoryId: string) =>
+    public static getCategoriesById = (categoryId: string) =>
     fetcher.get<ICategoryResponse[]>(
       StringUtils.bindContext(endpoints.GET_CATEGORY, { id: categoryId }),
+    );
+
+  ///******************************************************************** */ PUBLIC ********************************************************************\\
+  /**
+
+  /**
+   * Get Public product by id .
+   *
+   * @static
+   * @memberof ProductApi
+   */
+  public static getPublicProduct = (id: string) =>
+    fetcher.get<IPublicProductResponse>(
+      StringUtils.bindContext(endpoints.GET_PUBLIC_PRODUCT, { id }),
+    );
+
+  /**
+   * Get public product by slug
+   *
+   * @static
+   * @memberof ProductApi
+   */
+  public static getPublicProductBySlug = (slug: string) =>
+    fetcher.get<IPublicProductResponse>(
+      StringUtils.bindContext(endpoints.GET_PUBLIC_PRODUCT_SLUG, { slug }),
+    );
+
+  /**
+   * Get public catégories or with organization slug.
+   *
+   * @static
+   * @memberof ProductApi
+   */
+  public static getPublicCategories = () =>
+    fetcher.get<IPublicCategoryResponse[]>(
+      endpoints.GET_PUBLIC_CATEGORIES,
+    );
+
+  /**
+   * Get public catégories ou avec slug.
+   *
+   * @static
+   * @memberof ProductApi
+   */
+  public static getPublicCategoriesSlug = (slug: { [key: string]: any }) =>
+    fetcher.get<Pagination<IPublicCategoryResponse>>(
+      endpoints.GET_PUBLIC_CATEGORIES_SLUG,
+      { slug },
+    );
+
+  /**
+   * Get public categories and sub.
+   *
+   * @static
+   * @memberof ProductApi
+   */
+  public static getPublicCategoriesAndSub = () =>
+    fetcher.get<IPublicCategoryResponse[]>(
+      endpoints.GET_PUBLIC_CATEGORIES_AND_SUB,
     );
 }
 
