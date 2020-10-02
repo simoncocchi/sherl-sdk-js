@@ -6,7 +6,6 @@ module.exports = {
       'configuration',
       'authentication',
     ],
-    Features: ['product','person','order'],
-
+    Features: ['product','person','order', 'discount'],
   },
 };
