@@ -17,3 +17,4 @@ export const getMe = async (): Promise<IPersonMeResponse> => {
 
   throw new Error('Empty response from API');
 };
+
