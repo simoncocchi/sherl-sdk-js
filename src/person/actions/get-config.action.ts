@@ -1,12 +1,12 @@
 import { ApiResponse } from '../../common/api';
-import { IPersonMeResponse } from '../types';
+import { IConfigResponse } from '../types';
 import { PersonApi } from '../api/client';
 
-export const getMe = async (): Promise<IPersonMeResponse> => {
-  let response: ApiResponse<IPersonMeResponse> | null = null;
+export const getConfigs = async (): Promise<IConfigResponse[]> => {
+  let response: ApiResponse<IConfigResponse[]> | null = null;
 
   try {
-    response = await PersonApi.getMe();
+    response = await PersonApi.getConfigs();
   } catch ({ name, response: responseError, stack, isAxiosError, ...rest }) {
     throw new Error('Cannot reach API');
   }
@@ -17,4 +17,3 @@ export const getMe = async (): Promise<IPersonMeResponse> => {
 
   throw new Error('Empty response from API');
 };
-

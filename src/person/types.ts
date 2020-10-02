@@ -48,6 +48,16 @@ export interface IPersonMeResponse {
   };
 }
 
+export interface IConfigResponse {
+  id: string;
+  code: string;
+  value: any;
+  consumer: string;
+  position: number;
+  appliedTo?: string;
+  isPublic?: boolean;
+}
+
 export interface IImageObject {
   id?: string;
   consumerId?: string;

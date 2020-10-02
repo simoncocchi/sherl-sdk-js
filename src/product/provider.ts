@@ -1,10 +1,15 @@
 import {
-  getProduct,
   getProducts,
+  getProduct,
+  getPublicProduct,
+  getPublicProductBySlug,
+  getPublicCategoriesAndSub,
+  getPublicCategoriesSlug,
   getPublicProducts,
+  getPublicCategories,
+  getCategories,
   getCategoriesById,
 } from './actions';
-import { getCategories } from './actions/get-categories.action';
 
 class ProductProvider {
   public list(
@@ -58,6 +63,44 @@ class ProductProvider {
    */
   public categoriesById(categoryId: string) {
     return getCategoriesById(categoryId);
+  }
+
+  //********************************************************************************* PUBLIC **********************************************************************************/
+
+  /**
+   * Get categories.
+   *
+   *
+   * @returns
+   * @memberof ProductProvider
+   */
+  public PublicCategoriesAndSub() {
+    return getPublicCategoriesAndSub();
+  }
+
+  public PublicCategoriesSlug(slug: { [key: string]: any }) {
+    return getPublicCategoriesSlug(slug);
+  }
+
+  public PublicCategories() {
+    return getPublicCategories();
+  }
+
+  public PublicProductById(id: string) {
+    return getPublicProduct(id);
+  }
+
+  public PublicProductBySlug(slug: string) {
+    return getPublicProductBySlug(slug);
+  }
+
+  public publicproductlist(
+    page = 1,
+    itemsPerPage = 10,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    filters: { [key: string]: any },
+  ) {
+    return getPublicProducts(page, itemsPerPage, filters);
   }
 }
 
