@@ -3,3 +3,4 @@ node_modules
 /lib-esm
 /_bundles
 /.vscode
+.DS_Store
